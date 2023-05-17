@@ -14,31 +14,26 @@
 
 *Important questions:*
 
-1. *Is the ERD well-designed, specifically regarding cardinality?*
-2. *What is the API design and implementation in the code?*
-3. *What are the general front end questions?*
+1. Is the ERD well-designed, specifically regarding cardinality?
+2. What is the API design and implementation in the code?
+3. What are the general front end questions?
+4. What is the MVC design pattern?
+5. Can Spring Boot be implemented in this project?
 
 ## ***3. Use Cases***
 
 *Customer use cases:*
 
-- *U1. As a user, I want to be able to get a project, to review information about its title and description.*
-- *U2. As a user, I want to be able to create a project with a title and description to begin adding tasks.*
-- *U3. As a user, I want to be able to delete a project, because the project was created by mistake.*
-- *U4. As a user, I want to be able to update a project, to change the name or description of a project.*
-- *U5. As a user, I want to be able to update a project, to mark it as complete.*
-
-*Task use cases:*
-
-- *U1. As a user, I want to be able to get a task from a project, to review information about its title, description, and status.*
-- *U2. As a user, I want to be able to create a task for a project, with title and description.*
-- *U3. As a user, I want to be able to delete tasks from a project, because they were made by mistake.*
-- *U4. As a user, I want to be able to update tasks from a project, marking it as “complete” to show what work has been done.*
-
-*Querying Tasks and Projects*
-
-- *U1. As a user, I want to be able to review a list of projects.*
-- *U2. As a user, I want to review a list of tasks on a project to overview the work on a project.*
+- U1. As a user, I want to create a user profile.
+- U2. As a user, I want to create a new Guild.
+- U3. As a user, I want to add new members to the Guild.
+- U4. As a user, I want to create new raids.
+- U5. As a user, I want to sign-up/add myself to raids.
+- U6. As a user, I want to create a wishlist of items for myself.
+- U7. As a user, I want to edit items in the wishlist.
+- U8. As a user, I want to clear the entire wishlist at once.
+- U9. As a user, I want to see a list of all the loot that I have received.
+- U10. As a user, I want to create new characters in my profile.
 
 ## ***4. Project Scope***
 
@@ -48,7 +43,7 @@
 
 *Which parts of the problem defined in Sections 1 and 2 will you solve with this design?*
 
-- *CRUD functionality for a user to perform operations on tasks and projects.*
+- *CRUD functionality for a user to perform operations on raid instances, loot assignment, profile creation and character creation*
 
 *The functionality described above should be what your design is focused on.*
 
@@ -56,9 +51,8 @@
 
 *Based on your problem description in Sections 1 and 2, are there any aspects you are not planning to solve?*
 
-- *Implementing roles for users because our main focus is to allow any user to have access to CRUD functionality for projects and tasks.*
-- *Ability to prioritize tasks.*
-- *Creating specific users.*
+- Assigning loot may be out of the scope for this depending on complexity.
+- Implementing calendar functionality, reminders or boss strategies will also most likely be out of scope.
 
 *The functionality here does not need to be accounted for in your design.*
 
@@ -66,7 +60,7 @@
 
 *Describe broadly how you are proposing to solve for the requirements you described in Section 2.*
 
-*To satisfy our requirements, we will need to design (possibly) two DynamoDB tables that will contain Projects created by our users and tasks that will be added to the projects. Each project will be identified by its projectId (partition Key). Each task will be identified by its taskId (partition Key) and a projectId (sort key). This dual-table design will allow us to query tasks for a specific project in an easily developed model. Our API will essentially have a GET, POST and DELETE method for projects and tasks. Measures will be taken so that when a project is deleted, we are also deleting the tasks from its respective table and vice versa. Request objects will be created that will hold the parameters for each method.*
+*Broadly speaking, we will need to design api endpoints that will be able to call our databases for profile information, character information and loot distribution information. Our databases we will need a database to hold each profile, raid instance and guild (not sure about complete architecture right now). *
 
 # ***6. API***
 
