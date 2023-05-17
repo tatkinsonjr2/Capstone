@@ -158,20 +158,35 @@
 
 ### ***7.2 Characters***
 
-| Field              | Type |
-|--------------------| --- |
-| username           | String (Hash Key) |
+| Field              | Type               |
+|--------------------|--------------------|
+| username           | String (Hash Key)  |
 | characterName      | String (Range Key) |
-| class              | String |
-| spec               | String |
-| role               | String |
-  | race               | String  |
-  | publicNote         | String |
-| OfficerNote        | String |
-| professionOne      | String |
-| professionTwo      | String |
-| alternateCharacter | Boolean |
-| archive            | Boolean|
+| class              | String             |
+| spec               | String             |
+| role               | String             |
+| race               | String             |
+| publicNote         | String             |
+| OfficerNote        | String             |
+| professionOne      | String             |
+| professionTwo      | String             |
+| alternateCharacter | Boolean            |
+| archive            | Boolean            |
+|wishList | List<Item> |
+
+
+### ***7.3 RaidInstances***
+
+| Field        | Type             |
+|--------------|------------------|
+| raidName     | String(Hash Key) |
+| date         | ZonedDateTime    |
+| publicNote   | String           |
+| officerNote  | String           |
+| status       | String           |
+| instanceName | String           |
+| attendees    | List<Character>  |
+
 
 # ***8. Pages***
 
