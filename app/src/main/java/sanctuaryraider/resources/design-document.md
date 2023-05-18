@@ -4,7 +4,7 @@
 
 ## ***Instructions***
 
-## ***Group 3 - Midstone Design***
+## ***Capstone***
 
 ## ***1. Problem Statement***
 
@@ -172,24 +172,24 @@
 | professionTwo      | String             |
 | alternateCharacter | Boolean            |
 | archive            | Boolean            |
-|wishList | List<Item> |
+| wishList           | List<Item>         |
 
 
 ### ***7.3 RaidInstances***
 
-| Field        | Type             |
-|--------------|------------------|
-| raidName     | String(Hash Key) |
-| date         | ZonedDateTime    |
-| publicNote   | String           |
-| officerNote  | String           |
-| status       | String           |
-| instanceName | String           |
-| attendees    | List<Character>  |
+| Field        | Type              |
+|--------------|-------------------|
+| raidName     | String (Hash Key) |
+| date         | ZonedDateTime     |
+| publicNote   | String            |
+| officerNote  | String            |
+| status       | String            |
+| instanceName | String            |
+| attendees    | List<Character>   |
 
 
 # ***8. Pages***
 
 *Include mock-ups of the web pages you expect to build.*
 
-![untitled_720.jpg](v2-design-document%204202480f787143fbbfe957f51481b4b3/untitled_720
+https://www.canva.com/design/DAFjR-j3eeI/yTRDLBh9DCGKoUy-ntC9sQ/edit?utm_content=DAFjR-j3eeI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
