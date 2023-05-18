@@ -39,10 +39,10 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
-application {
-    // Define the main class for the application.
-    mainClass = 'sanctuaryraider.App'
-}
+//application {
+//    // Define the main class for the application.
+//    mainClass = 'sanctuaryraider.App'
+//}
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
