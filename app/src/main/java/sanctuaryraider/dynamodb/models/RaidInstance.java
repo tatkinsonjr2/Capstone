@@ -1,9 +1,12 @@
 package sanctuaryraider.dynamodb.models;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+
 import java.time.ZonedDateTime;
 import java.util.List;
-
-public class RaidInstanceModel {
+@DynamoDBTable(tableName = "raids")
+public class RaidInstance {
 
     private String raidName;
     private ZonedDateTime date;
@@ -13,11 +16,6 @@ public class RaidInstanceModel {
     private String instanceName;
     private List<Character> attendees;
 
-    public RaidInstanceModel(String raidName, ZonedDateTime date, String instanceName, List<Character> attendees){
-        this.raidName = raidName;
-        this.date = date;
-        this.instanceName = instanceName;
-        this.attendees = attendees;
-    }
+@DynamoDBAttribute(attributeName = "")
 
  }
