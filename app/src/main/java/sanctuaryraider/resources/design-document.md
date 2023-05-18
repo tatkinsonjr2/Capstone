@@ -152,7 +152,7 @@
 | Field       | Type              |
 |-------------|-------------------|
 | username    | String (Hash Key) |
-| characters  | List<String>      |
+| characters  | List /String      |
 | publicNote  | String            |
 | officerNote | String            |
 
@@ -172,7 +172,7 @@
 | professionTwo      | String             |
 | alternateCharacter | Boolean            |
 | archive            | Boolean            |
-| wishList           | List<Item>         |
+| wishList           | List /Item         |
 
 
 ### ***7.3 RaidInstances***
@@ -185,7 +185,7 @@
 | officerNote  | String            |
 | status       | String            |
 | instanceName | String            |
-| attendees    | List<Character>   |
+| attendees    | List /String      |
 
 
 # ***8. Pages***
