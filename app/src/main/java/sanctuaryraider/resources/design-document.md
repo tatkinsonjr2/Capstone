@@ -4,7 +4,7 @@
 
 ## ***Instructions***
 
-## ***Group 3 - Midstone Design***
+## ***Capstone***
 
 ## ***1. Problem Statement***
 
@@ -34,6 +34,8 @@
 - U8. As a user, I want to clear the entire wishlist at once.
 - U9. As a user, I want to see a list of all the loot that I have received.
 - U10. As a user, I want to create new characters in my profile.
+- U11. As a user, I want to view a list of all created raids.
+- U12. As a user, I want to view raids based upon search results or character names.
 
 ## ***4. Project Scope***
 
@@ -53,6 +55,7 @@
 
 - Assigning loot may be out of the scope for this depending on complexity.
 - Implementing calendar functionality, reminders or boss strategies will also most likely be out of scope.
+- Discord functionality likely out of scope.
 
 *The functionality here does not need to be accounted for in your design.*
 
@@ -60,73 +63,133 @@
 
 *Describe broadly how you are proposing to solve for the requirements you described in Section 2.*
 
-*Broadly speaking, we will need to design api endpoints that will be able to call our databases for profile information, character information and loot distribution information. Our databases we will need a database to hold each profile, raid instance and guild (not sure about complete architecture right now). *
+*Broadly speaking, we will need to design api endpoints that will be able to call our databases for profile information, character information and loot distribution information. We will need a database to hold each profile, raid instance and guild (not sure about complete architecture right now).*
 
 # ***6. API***
 
 ### ***6.1. Public Models***
 
 *Define the data models your service will expose in its responses via your -Model package.*
+1. Guild Model.
+2. Profile Model.
+3. Item Model.
+4. Character Model.
+5. Raid/Raid Instance Model.
+6. Raid Group Model(possibly).
 
-### ***6.2. Get Project/Tasks Endpoint***
+### ***6.2. Get Profile Endpoint***
 
 *Describe the behavior of the first endpoint you will build into your service API.*
+- Accepts Get requests to /profile/:username
+  - If the given username is not found will throw ProfileNotFoundException.
 
-*(You should have a separate section for each of the endpoints you are expecting to build...)*
 
-- *Accepts GET requests to /projects/:projectId and/or /tasks/:taskId*
-- *Accepts project ID and returns the corresponding ProjectModel.*
-    - *If the given project ID is not found, will throw a ProjectNotFoundException.*
-    - *If the given task ID is not found, wil throw a TaskNotFoundException.*
-
-### ***6.3 Create Project and/or Create Task***
+### ***6.3 Create Profile Endpoint***
 
 *(repeat, but you can use shorthand here, indicating what is different, likely primarily the data in/out and error conditions. If the sequence diagram is nearly identical, you can say in a few words how it is the same/different from the first endpoint)*
 
-- *Accepts POST requests to /projects and/or /tasks.*
-- *Accepts data to create a new project or a new task with a provided name and description. Returns the new project/task, including a unique projectId/taskId assigned by the task management service.*
-- *For security concerns, we will validate the provided project/task name does not contain any invalid characters: " ' \*
-    - *If the project/task name contains any of the invalid characters, will throw an InvalidAttributeValueException.*
+- *Accepts POST requests to /profile.*
+- *Accepts data to create a new profile. Returns the new profile, including a unique username.*
+- *For security concerns, we will validate the provided username name does not contain any invalid characters: " ' \*
+    - *If the profile username contains any of the invalid characters, will throw an InvalidAttributeValueException.*
 
-### ***6.4 Update Project/Task Endpoint***
+### ***6.4 Update Profile Endpoint***
 
-- *Accepts PUT requests to /projects/:projectId and /tasks/:taskId.*
-- *Accepts data to update a project/task including a projectId/taskId, an updated project/task name and updated status. Returns the updated project or task.*
-    - *If the project/task is not found, will throw a ProjectNotFoundException or TaskNotFoundException.*
+- *Accepts PUT requests to /profile/:username.*
+- *Accepts data to update a profile. Returns the updated profile.*
+    - *If the profile is not found, will throw a ProfileNotFoundException.*
 - *For security concerns, we will validate the provided project/task name does not contain invalid characters: " ' \*
-    - *If the project/task name contains invalid characters, will throw an InvalidAttributeValueException.*
+    - *If the profile name contains invalid characters, will throw an InvalidAttributeValueException.*
 
-### ***6.5 Delete Project/Task***
+### ***6.5 Delete Profile Endpoint***
 
-- *Accepts DELETE requests to /projects/:projectId and /tasks/:taskId.*
-- *Accepts a projectId or taskId.*
-    - *If the project or task is not found, will throw a ProjectNotFoundException or TaskNotFoundException.*
+- *Accepts DELETE requests to /profile/:username.*
+- *Accepts a username.*
+    - *If the profile or task is not found, will throw a ProfileNotFoundException.*
+
+### ***6.6 Get Character Endpoint***
+- Accepts GET requests to /profile/:username/character/:characterName.
+- Accepts a username.
+  - If character is not found, throws a CharacterNotFoundException or if the character already exists/has been created throws CharacterInUseException.
+- For security concerns, we will validate the provided project/task name does not contain invalid characters: " ' \*
+  - *If the project/task name contains invalid characters, will throw an InvalidAttributeValueException.*
+
+### ***6.7 Create Character Endpoint***
+- Accepts POST requests to /profile/:username/character.
+- Accepts data to create a new character. Returns a new character including a unique character name.
+- *For security concerns, we will validate the provided username name does not contain any invalid characters: " ' \*
+  - *If the profile username contains any of the invalid characters, will throw an InvalidAttributeValueException.*
+
+### ***6.8 Update Character Endpoint***
+- Accepts PUT requests to /profile/:username/character/:characterName.
+- Accepts data to update a character within a profile.
+  - *If the profile is not found, will throw a ProfileNotFoundException.*
+- *For security concerns, we will validate the provided project/task name does not contain invalid characters: " ' \*
+  - *If the profile name contains invalid characters, will throw an InvalidAttributeValueException.*
+
+### ***6.9 Create Raid Endpoint***
+- Accepts POST requests to /raidInstance.
+- Accepts data to create a new raidInstance. Returns a new raid including a unique raid name.
+  - *If the raid name contains invalid characters, will throw an InvalidAttributeValueException.*
+
+### ***6.10 Update Raid Endpoint***
+- Accepts PUT requests to /raidInstance/:raidName.
+- Accepts data to update a new raidInstance. Returns a new raid including the unique raid name.
+  - *If the raid name contains invalid characters, will throw an InvalidAttributeValueException.*
+
+### ***6.11 GET Raid Endpoint***
+- Accepts GET requests to /raidInstance/:raidName.
+- Accepts a raidName.
+  - If a raidName does not exist or is incorrectly typed, will throw a RaidNotFoundException.
+  - *If the raid name contains invalid characters, will throw an InvalidAttributeValueException.*
 
 # ***7. Tables***
 
 *Define the DynamoDB tables you will need for the data your service will use.*
 
-### ***7.1 Projects***
+### ***7.1 Profiles***
 
-| Field | Type |
-| --- | --- |
-| projectId | String (Hash Key) |
-| name | String |
-| description | String |
-| status | String |
+| Field       | Type              |
+|-------------|-------------------|
+| username    | String (Hash Key) |
+| characters  | List<String>      |
+| publicNote  | String            |
+| officerNote | String            |
 
-### ***7.2 Tasks***
+### ***7.2 Characters***
 
-| Field | Type |
-| --- | --- |
-| projectId | String (Hash Key) |
-| taskId | String (Range Key) |
-| name | String |
-| description | String |
-| status | String |
+| Field              | Type               |
+|--------------------|--------------------|
+| username           | String (Hash Key)  |
+| characterName      | String (Range Key) |
+| class              | String             |
+| spec               | String             |
+| role               | String             |
+| race               | String             |
+| publicNote         | String             |
+| OfficerNote        | String             |
+| professionOne      | String             |
+| professionTwo      | String             |
+| alternateCharacter | Boolean            |
+| archive            | Boolean            |
+| wishList           | List<Item>         |
+
+
+### ***7.3 RaidInstances***
+
+| Field        | Type              |
+|--------------|-------------------|
+| raidName     | String (Hash Key) |
+| date         | ZonedDateTime     |
+| publicNote   | String            |
+| officerNote  | String            |
+| status       | String            |
+| instanceName | String            |
+| attendees    | List<Character>   |
+
 
 # ***8. Pages***
 
 *Include mock-ups of the web pages you expect to build.*
 
-![untitled_720.jpg](v2-design-document%204202480f787143fbbfe957f51481b4b3/untitled_720
+https://www.canva.com/design/DAFjR-j3eeI/yTRDLBh9DCGKoUy-ntC9sQ/edit?utm_content=DAFjR-j3eeI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
