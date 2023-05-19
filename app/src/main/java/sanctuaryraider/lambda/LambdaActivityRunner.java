@@ -1,6 +1,6 @@
 package sanctuaryraider.lambda;
 
-import com.nashss.se.projectmanagementservice.dependency.DaggerServiceComponent;
+import sanctuaryraider.dependency.DaggerServiceComponent;
 import sanctuaryraider.dependency.ServiceComponent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
