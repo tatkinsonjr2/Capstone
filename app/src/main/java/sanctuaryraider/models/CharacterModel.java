@@ -1,6 +1,7 @@
 package sanctuaryraider.models;
 
 import java.util.List;
+import java.util.Objects;
 
 public class CharacterModel {
     private final String username;
@@ -86,6 +87,26 @@ public class CharacterModel {
         return wishList;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CharacterModel that = (CharacterModel) o;
+        return Objects.equals(username, that.username) && Objects.equals(characterName, that.characterName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, characterName);
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public static final class Builder {
         private String username;
@@ -102,10 +123,6 @@ public class CharacterModel {
         private boolean archive;
         private List<String> wishList;
 
-
-        public static Builder builder() {
-            return new Builder();
-        }
 
         public Builder withUsername(String username) {
             this.username = username;

@@ -48,18 +48,16 @@ public class ProfileModel {
         return Objects.hash(username, guild);
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
 
     public static final class Builder {
         private String username;
         private String guild;
         private String publicNote;
         private String officerNote;
-
-
-
-        public static Builder builder() {
-            return new Builder();
-        }
 
         public Builder withUsername(String username) {
             this.username = username;

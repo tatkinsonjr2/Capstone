@@ -71,8 +71,13 @@ public class RaidModel {
         return Objects.hash(raidName);
     }
 
+    //CHECKSTYLE:OFF:Builder
+    public static Builder builder() {
+        return new Builder();
+    }
 
-    public static final class Builder {
+
+    public static class Builder {
         private String raidName;
         private String publicNote;
         private ZonedDateTime date;
@@ -82,9 +87,7 @@ public class RaidModel {
         private List<String> attendees;
 
 
-        public static Builder builder() {
-            return new Builder();
-        }
+
 
         public Builder withRaidName(String raidName) {
             this.raidName = raidName;
