@@ -3,6 +3,9 @@ package sanctuaryraider.converters;
 import sanctuaryraider.dynamodb.models.Character;
 import sanctuaryraider.models.CharacterModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CharacterModelConverter {
 
     public CharacterModel toCharacterModel(Character character){
@@ -20,4 +23,14 @@ public class CharacterModelConverter {
                 .withWishList(character.getWishlist())
                 .build();
     }
+
+    public List<CharacterModel> toCharacterModelList(List<Character> characters){
+        List<CharacterModel> characterModels = new ArrayList<>();
+
+        for(Character character : characters){
+            characterModels.add(toCharacterModel(character));
+        }
+        return characterModels;
+    }
+
 }
