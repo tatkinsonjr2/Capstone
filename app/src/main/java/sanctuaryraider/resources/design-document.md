@@ -175,7 +175,7 @@
 | wishList           | List Item          |
 
 
-### ***7.3 RaidInstances***
+### ***7.3 Raids***
 
 | Field        | Type              |
 |--------------|-------------------|
