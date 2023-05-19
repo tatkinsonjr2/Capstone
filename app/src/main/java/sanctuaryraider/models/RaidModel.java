@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class RaidModel {
-    private String raidName;
-    private String publicNote;
-    private ZonedDateTime date;
-    private String officerNote;
-    private String status;
-    private String instanceName;
-    private List<String> attendees;
+    private final String raidName;
+    private final String publicNote;
+    private final ZonedDateTime date;
+    private final String officerNote;
+    private final String status;
+    private final String instanceName;
+    private final List<String> attendees;
 
     private RaidModel(String raidName, ZonedDateTime date, String publicNote, String officerNote, String status, String instanceName, List<String> attendees) {
         this.raidName = raidName;
@@ -71,8 +71,13 @@ public class RaidModel {
         return Objects.hash(raidName);
     }
 
+    //CHECKSTYLE:OFF:Builder
+    public static Builder builder() {
+        return new Builder();
+    }
 
-    public static final class Builder {
+
+    public static class Builder {
         private String raidName;
         private String publicNote;
         private ZonedDateTime date;
@@ -82,9 +87,7 @@ public class RaidModel {
         private List<String> attendees;
 
 
-        public static Builder builder() {
-            return new Builder();
-        }
+
 
         public Builder withRaidName(String raidName) {
             this.raidName = raidName;

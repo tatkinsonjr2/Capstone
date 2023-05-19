@@ -25,7 +25,7 @@ public class Profile {
     }
 
     @DynamoDBAttribute(attributeName = "guild")
-    public String getCharacters() {
+    public String getGuild() {
         return guild;
     }
 
