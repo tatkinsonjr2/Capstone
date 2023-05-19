@@ -80,7 +80,7 @@
 ### ***6.2. Get Profile Endpoint***
 
 *Describe the behavior of the first endpoint you will build into your service API.*
-- Accepts Get requests to /profile/:username
+- Accepts GET requests to /profile/:username
   - If the given username is not found will throw ProfileNotFoundException.
 
 
@@ -142,6 +142,13 @@
 - Accepts a raidName.
   - If a raidName does not exist or is incorrectly typed, will throw a RaidNotFoundException.
   - *If the raid name contains invalid characters, will throw an InvalidAttributeValueException.*
+### ***6.12 Delete Character Endpoint***
+- Accepts DELETE requests to /profile/:username/character/:characterName
+- Accepts a profile username and a character name.
+  - If character is not found, throws a CharacterNotFoundException or if the character already exists/has been created throws CharacterInUseException.
+- For security concerns, we will validate the provided project/task name does not contain invalid characters: " ' \*
+  - *If the project/task name contains invalid characters, will throw an InvalidAttributeValueException.*
+
 
 # ***7. Tables***
 
