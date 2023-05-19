@@ -11,7 +11,7 @@ import java.util.Objects;
 @DynamoDBTable(tableName = "profiles")
 public class Profile {
     private String username;
-    private List<String> characters;
+    private String guild;
     private String publicNote;
     private String officerNote;
 
@@ -24,13 +24,13 @@ public class Profile {
         this.username = username;
     }
 
-    @DynamoDBAttribute(attributeName = "characters")
-    public List<String> getCharacters() {
-        return characters;
+    @DynamoDBAttribute(attributeName = "guild")
+    public String getCharacters() {
+        return guild;
     }
 
-    public void setCharacters(List<String> characters) {
-        this.characters = characters;
+    public void setCharacters(String guild) {
+        this.guild = guild;
     }
 
     @DynamoDBAttribute(attributeName = "publicNote")
