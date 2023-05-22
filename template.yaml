@@ -229,12 +229,12 @@ Resources:
   # Lambda Functions Configuration
   #-----------------------------------------------------
 
-  GetPlaylistLambda:
+  GetProfileLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: SanctuaryRaiderServiceLambda
-      Handler: com.nashss.se.musicplaylistservice.lambda.GetPlaylistLambda::handleRequest
+      Handler: sanctuaryraider.lambda.GetProfileLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -246,7 +246,7 @@ Resources:
         MusicPlaylistService:
           Type: Api
           Properties:
-            Path: /playlists/{id}
+            Path: /profile/{username}
             Method: get
             Auth:
               Authorizer: 'NONE'

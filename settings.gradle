@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'SanctuaryRaider'
-include('app')
+include 'SanctuaryRaiderServiceLambda'

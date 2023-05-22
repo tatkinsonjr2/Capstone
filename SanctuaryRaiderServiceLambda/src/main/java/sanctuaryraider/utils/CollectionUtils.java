@@ -2,7 +2,7 @@ package sanctuaryraider.utils;
 
 import java.util.*;
 
-import static com.nashss.se.musicplaylistservice.utils.NullUtils.ifNotNull;
+import static sanctuaryraider.utils.NullUtils.ifNotNull;
 
 /**
  * Various helpful utilities for converting collections.
