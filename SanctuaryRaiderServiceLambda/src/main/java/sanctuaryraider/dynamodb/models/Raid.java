@@ -19,7 +19,7 @@ public class Raid {
     private String instanceName;
     private List<String> attendees;
 
-    @DynamoDBHashKey(attributeName = "raids")
+    @DynamoDBHashKey(attributeName = "raidName")
     public String getRaidName() {
         return raidName;
     }
