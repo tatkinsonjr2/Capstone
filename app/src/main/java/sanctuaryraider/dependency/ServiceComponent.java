@@ -1,6 +1,9 @@
 package sanctuaryraider.dependency;
 
+import com.amazonaws.services.lambda.runtime.RequestHandler;
 import dagger.Component;
+import sanctuaryraider.activity.GetProfileActivity;
+import sanctuaryraider.activity.requests.GetProfileRequest;
 
 import javax.inject.Singleton;
 
@@ -10,6 +13,7 @@ import javax.inject.Singleton;
 @Singleton
 @Component(modules = {DaoModule.class, MetricsModule.class})
 public interface ServiceComponent {
+    GetProfileActivity provideGetProfileActivity();
 
 //    DeleteTicketActivity provideDeleteTicketActivity();
 //

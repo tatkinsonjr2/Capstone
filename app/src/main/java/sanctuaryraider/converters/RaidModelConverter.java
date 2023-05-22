@@ -13,6 +13,7 @@ public class RaidModelConverter {
      * @param raid the Raid to convert
      * @return the converted project
      */
+
     public RaidModel toRaidModel(Raid raid){
         return RaidModel.builder().withRaidName(raid.getRaidName())
                 .withPublicNote(raid.getPublicNote())
