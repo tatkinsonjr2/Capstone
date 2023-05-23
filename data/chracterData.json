@@ -1,0 +1,50 @@
+{
+  "profiles": [
+    {
+      "PutRequest": {
+        "Item": {
+          "username": { "S": "ttime" },
+          "guild": { "N": "Fusion" },
+          "publicNote": { "S": "Main tank, full bis." },
+          "officerNote": { "S": "Plays well, decent parses." }
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "PutRequest": {
+        "Item": {
+          "username": { "S": "ttime" },
+          "characterName": { "S": "fatheroftwo" },
+          "characterClass": { "N": "Paladin" },
+          "spec": { "S": "Holy" },
+          "role": { "S": "Healer" },
+          "race": { "S": "Human" },
+          "publicNote": { "S": "Most geared holy paladin"},
+          "officerNote": {"S": "Great parses"},
+          "professionOne": {"S": "Herbalism"},
+          "professionTwo": {"S": "Mining"},
+          "alternateCharacter": {"Bool": false},
+          "wishList": {"SS": ["Caress of Insanity", "Comet's Trail"]}
+        }
+      }
+    }
+  ],
+  "raids": [
+    {
+      "PutRequest": {
+        "Item": {
+          "raidName": {"S": "Quick Ulduar"},
+          "date": {"N": "05/23/23"},
+          "publicNote": {"S": "Had tons of noobs in this"},
+          "officerNote": {"S": "These kids are bad."},
+          "status": {"S": "Completed"},
+          "instanceName": {"S": "Ulduar 25"},
+          "attendees": {"SS": ["fatheroftwo"]}
+
+        }
+      }
+    }
+  ]
+}
