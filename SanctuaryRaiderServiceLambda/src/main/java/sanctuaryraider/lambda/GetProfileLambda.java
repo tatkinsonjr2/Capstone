@@ -8,12 +8,12 @@ import sanctuaryraider.activity.requests.GetProfileRequest;
 import sanctuaryraider.activity.results.GetProfileResult;
 
 public class GetProfileLambda extends LambdaActivityRunner<GetProfileRequest, GetProfileResult>
-        implements RequestHandler<LambdaRequest<GetProfileRequest>, LambdaResponse> {
+        implements RequestHandler<AuthenticatedLambdaRequest<GetProfileRequest>, LambdaResponse> {
 
     private final Logger log = LogManager.getLogger();
 
     @Override
-    public LambdaResponse handleRequest(LambdaRequest<GetProfileRequest> input, Context context){
+    public LambdaResponse handleRequest(AuthenticatedLambdaRequest<GetProfileRequest> input, Context context){
         log.info("handleRequest");
         return super.runActivity(
                 () -> input.fromPath(path -> GetProfileRequest.builder().withUsername(path.get("username")).build()),
