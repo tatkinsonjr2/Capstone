@@ -31,6 +31,17 @@ public class ProfileModel {
         return officerNote;
     }
 
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, guild);
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -40,16 +51,7 @@ public class ProfileModel {
             return false;
         }
         ProfileModel that = (ProfileModel) o;
-        return Objects.equals(username, that.username) && Objects.equals(guild, that.guild);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(username, guild);
-    }
-
-    public static Builder builder() {
-        return new Builder();
+        return Objects.equals(username, that.username);
     }
 
 

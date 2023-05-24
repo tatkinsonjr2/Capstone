@@ -29,7 +29,7 @@ public class Profile {
         return guild;
     }
 
-    public void setCharacters(String guild) {
+    public void setGuild(String guild) {
         this.guild = guild;
     }
 

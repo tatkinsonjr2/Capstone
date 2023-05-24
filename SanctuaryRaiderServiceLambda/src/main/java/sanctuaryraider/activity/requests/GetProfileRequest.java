@@ -16,7 +16,7 @@ public class GetProfileRequest {
 
     @Override
     public String toString(){
-        return "GetProfileRequest{" + "username=" + username + '\'' + '}';
+        return "GetProfileRequest{" + "username='" + username + '\'' + '}';
     }
 
     public static Builder builder(){

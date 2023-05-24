@@ -4,7 +4,7 @@
       "PutRequest": {
         "Item": {
           "username": { "S": "ttime" },
-          "guild": { "N": "Fusion" },
+          "guild": { "S": "Fusion" },
           "publicNote": { "S": "Main tank, full bis." },
           "officerNote": { "S": "Plays well, decent parses." }
         }
@@ -17,7 +17,7 @@
         "Item": {
           "username": { "S": "ttime" },
           "characterName": { "S": "fatheroftwo" },
-          "characterClass": { "N": "Paladin" },
+          "characterClass": { "S": "Paladin" },
           "spec": { "S": "Holy" },
           "role": { "S": "Healer" },
           "race": { "S": "Human" },
@@ -25,7 +25,7 @@
           "officerNote": {"S": "Great parses"},
           "professionOne": {"S": "Herbalism"},
           "professionTwo": {"S": "Mining"},
-          "alternateCharacter": {"Bool": false},
+          "alternateCharacter": {"BOOL": false},
           "wishList": {"SS": ["Caress of Insanity", "Comet's Trail"]}
         }
       }
@@ -36,7 +36,7 @@
       "PutRequest": {
         "Item": {
           "raidName": {"S": "Quick Ulduar"},
-          "date": {"N": "05/23/23"},
+          "date": {"N": "052323"},
           "publicNote": {"S": "Had tons of noobs in this"},
           "officerNote": {"S": "These kids are bad."},
           "status": {"S": "Completed"},
