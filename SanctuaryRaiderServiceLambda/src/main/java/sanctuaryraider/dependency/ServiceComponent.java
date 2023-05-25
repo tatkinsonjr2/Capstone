@@ -2,7 +2,9 @@ package sanctuaryraider.dependency;
 
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import dagger.Component;
+import sanctuaryraider.activity.CreateProfileActivity;
 import sanctuaryraider.activity.GetProfileActivity;
+import sanctuaryraider.activity.requests.CreateProfileRequest;
 import sanctuaryraider.activity.requests.GetProfileRequest;
 
 import javax.inject.Singleton;
@@ -15,28 +17,6 @@ import javax.inject.Singleton;
 public interface ServiceComponent {
     GetProfileActivity provideGetProfileActivity();
 
-//    DeleteTicketActivity provideDeleteTicketActivity();
-//
-//    DeleteProjectActivity provideDeleteProjectActivity();
-//
-//    GetProjectActivity provideGetProjectActivity();
-//
-//    CreateTicketActivity provideCreateTicketActivity();
-//
-//    GetTicketActivity provideGetTicketActivity();
-//
-//    GetAllTicketsActivity provideGetAllTicketsActivity();
-//
-//    CreateProjectActivity provideCreateProjectActivity();
-//
-//    UpdateTicketDetailsActivity provideUpdateTicketActivity();
-//
-//    GetAllProjectsActivity provideGetAllProjectsActivity();
-//
-//    UpdateProjectStatusActivity provideUpdateProjectStatusActivity();
-//
-//    UpdateProjectDetailsActivity provideUpdateProjectDetailsActivity();
-//
-//    UpdateTicketStatusActivity provideUpdateTicketStatusActivity();
+    CreateProfileActivity provideCreateProfileActivity();
 
 }
