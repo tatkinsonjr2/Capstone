@@ -3,9 +3,11 @@ package sanctuaryraider.dependency;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import dagger.Component;
 import sanctuaryraider.activity.CreateProfileActivity;
+import sanctuaryraider.activity.GetCharacterActivity;
 import sanctuaryraider.activity.GetProfileActivity;
 import sanctuaryraider.activity.UpdateProfileActivity;
 import sanctuaryraider.activity.requests.CreateProfileRequest;
+import sanctuaryraider.activity.requests.GetCharacterRequest;
 import sanctuaryraider.activity.requests.GetProfileRequest;
 import sanctuaryraider.activity.requests.UpdateProfileRequest;
 
@@ -22,4 +24,6 @@ public interface ServiceComponent {
     CreateProfileActivity provideCreateProfileActivity();
 
     UpdateProfileActivity provideUpdateProfileActivity();
+
+    GetCharacterActivity provideGetCharacterActivity();
 }

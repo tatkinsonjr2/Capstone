@@ -2,6 +2,7 @@ package sanctuaryraider.models;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class CharacterModel {
     private final String username;
@@ -16,9 +17,9 @@ public class CharacterModel {
     private final String professionTwo;
     private final boolean alternateCharacter;
     private final boolean archive;
-    private final List<String> wishList;
+    private final Set<String> wishList;
 
-    public CharacterModel(String username, String characterName, String characterClass, String spec, String role, String race, String publicNote, String officerNote, String professionOne, String professionTwo, boolean alternateCharacter, boolean archive, List<String> wishList) {
+    public CharacterModel(String username, String characterName, String characterClass, String spec, String role, String race, String publicNote, String officerNote, String professionOne, String professionTwo, boolean alternateCharacter, boolean archive, Set<String> wishList) {
         this.username = username;
         this.characterName = characterName;
         this.characterClass = characterClass;
@@ -83,7 +84,7 @@ public class CharacterModel {
         return archive;
     }
 
-    public List<String> getWishList() {
+    public Set<String> getWishList() {
         return wishList;
     }
 
@@ -121,7 +122,7 @@ public class CharacterModel {
         private String professionTwo;
         private boolean alternateCharacter;
         private boolean archive;
-        private List<String> wishList;
+        private Set<String> wishList;
 
 
         public Builder withUsername(String username) {
@@ -184,7 +185,7 @@ public class CharacterModel {
             return this;
         }
 
-        public Builder withWishList(List<String> wishList) {
+        public Builder withWishList(Set<String> wishList) {
             this.wishList = wishList;
             return this;
         }

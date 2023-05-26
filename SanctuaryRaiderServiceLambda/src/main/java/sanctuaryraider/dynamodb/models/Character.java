@@ -8,6 +8,7 @@ import org.checkerframework.checker.units.qual.A;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @DynamoDBTable(tableName = "characters")
 public class Character {
@@ -22,7 +23,7 @@ public class Character {
     private String professionOne;
     private String professionTwo;
     private Boolean alternateCharacter;
-    private List<String> wishlist;
+    private Set<String> wishlist;
 
     @DynamoDBHashKey(attributeName = "username")
     public String getUsername() {
@@ -122,11 +123,11 @@ public class Character {
     }
 
     @DynamoDBAttribute(attributeName = "wishList")
-    public List<String> getWishlist() {
+    public Set<String> getWishlist() {
         return wishlist;
     }
 
-    public void setWishlist(List<String> wishlist) {
+    public void setWishlist(Set<String> wishlist) {
         this.wishlist = wishlist;
     }
 
