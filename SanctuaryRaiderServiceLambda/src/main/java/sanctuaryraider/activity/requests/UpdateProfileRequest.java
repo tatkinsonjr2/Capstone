@@ -36,7 +36,7 @@ public class UpdateProfileRequest {
 
     @Override
     public String toString(){
-        return "UpdateProjectStatusRequest{" + "username='" + username + '\'' + ", guild='" + guild + '\'' + ", publicNote=" + publicNote + '\'' + ", officerNote=" + '\'' + officerNote + '}';
+        return "UpdateProjectStatusRequest{" + "username='" + username + '\'' + ", guild='" + guild + '\'' + ", publicNote='" + publicNote + '\'' + ", officerNote='" + '\'' + officerNote + '\'' + '}';
     }
 
     public static Builder builder(){

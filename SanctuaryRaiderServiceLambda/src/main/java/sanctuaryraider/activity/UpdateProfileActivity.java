@@ -30,7 +30,7 @@ public class UpdateProfileActivity {
         profile.setPublicNote(updateProfileRequest.getPublicNote());
         profile.setGuild(updateProfileRequest.getGuild());
 
-        profileDao.saveProfile(profile);
+        profile = profileDao.saveProfile(profile);
 
         return UpdateProfileResult.builder().withProfile(new ProfileModelConverter().toProfileModel(profile)).build();
     }

@@ -242,10 +242,10 @@ Resources:
         Variables:
           JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
       Events:
-        MusicPlaylistService:
+        SanctuaryRaiderService:
           Type: Api
           Properties:
-            Path: /profile/{username}
+            Path: /profiles/{username}
             Method: get
             Auth:
               Authorizer: 'NONE'
@@ -264,33 +264,32 @@ Resources:
         Variables:
           JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
       Events:
-        MusicPlaylistService:
+        SanctuaryRaiderService:
           Type: Api
           Properties:
             Path: /profiles
             Method: post
-#  GetPlaylistSongsLambda:
-#    Type: AWS::Serverless::Function
-#    Properties:
-#      Role: !GetAtt AccessRole.Arn
-#      CodeUri: MusicPlaylistServiceLambda
-#      Handler: com.nashss.se.musicplaylistservice.lambda.GetPlaylistSongsLambda::handleRequest
-#      Runtime: java11
-#      Architectures:
-#        - x86_64
-#      MemorySize: 512
-#      Environment:
-#        Variables:
-#          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
-#      Events:
-#        MusicPlaylistService:
-#          Type: Api
-#          Properties:
-#            Path: /playlists/{id}/songs
-#            Method: get
-#            Auth:
-#              Authorizer: 'NONE'
-#
+
+  UpdateProfileLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Role: !GetAtt AccessRole.Arn
+      CodeUri: SanctuaryRaiderServiceLambda
+      Handler: sanctuaryraider.lambda.UpdateProfileLambda::handleRequest
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+      Events:
+        SanctuaryRaiderService:
+          Type: Api
+          Properties:
+            Path: /profiles/{username}
+            Method: put
+
 #  CreatePlaylistLambda:
 #    Type: AWS::Serverless::Function
 #    Properties:

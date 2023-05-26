@@ -17,7 +17,7 @@ public class UpdateProfileResult {
     @Override
     public String toString() {
         return "UpdateProfileResult{" +
-                "project=" + profile +
+                "profile=" + profile +
                 '}';
     }
 
