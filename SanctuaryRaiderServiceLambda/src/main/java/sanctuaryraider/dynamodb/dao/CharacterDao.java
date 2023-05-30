@@ -17,7 +17,7 @@ public class CharacterDao {
         this.dynamoDBMapper = dynamoDBMapper;
     }
 
-    public Character getProfile(String username, String characterName){
+    public Character getCharacter(String username, String characterName){
         Character character = dynamoDBMapper.load(Character.class, username, characterName);
         if(character == null){
             throw new CharacterNotFoundException();
