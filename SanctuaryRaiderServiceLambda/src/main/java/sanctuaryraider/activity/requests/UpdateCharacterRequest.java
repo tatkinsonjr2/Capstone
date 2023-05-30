@@ -1,13 +1,13 @@
 package sanctuaryraider.activity.requests;
 
-import com.amazonaws.services.dynamodbv2.xspec.S;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.amazonaws.services.dynamodbv2.xspec.B;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import java.util.Set;
-@JsonDeserialize(builder = CreateCharacterRequest.Builder.class)
-public class CreateCharacterRequest {
+
+@JsonDeserialize(builder = UpdateCharacterRequest.Builder.class)
+public class UpdateCharacterRequest {
 
     private final String username;
     private final String characterName;
@@ -21,21 +21,6 @@ public class CreateCharacterRequest {
     private final String professionTwo;
     private final Boolean alternateCharacter;
     private final Set<String> wishList;
-
-    private CreateCharacterRequest(String username, String characterName, String characterClass, String spec, String role, String race, String publicNote, String officerNote, String professionOne, String professionTwo, Boolean alternateCharacter, Set<String> wishList){
-        this.username = username;
-        this.characterName = characterName;
-        this.characterClass = characterClass;
-        this.spec = spec;
-        this.role = role;
-        this.race = race;
-        this.publicNote = publicNote;
-        this.officerNote = officerNote;
-        this.professionOne = professionOne;
-        this.professionTwo = professionTwo;
-        this.alternateCharacter = alternateCharacter;
-        this.wishList = wishList;
-    }
 
     public String getUsername() {
         return username;
@@ -85,9 +70,24 @@ public class CreateCharacterRequest {
         return wishList;
     }
 
+    public UpdateCharacterRequest(String username, String characterName, String characterClass, String spec, String role, String race, String publicNote, String officerNote, String professionOne, String professionTwo, Boolean alternateCharacter, Set<String> wishList) {
+        this.username = username;
+        this.characterName = characterName;
+        this.characterClass = characterClass;
+        this.spec = spec;
+        this.role = role;
+        this.race = race;
+        this.publicNote = publicNote;
+        this.officerNote = officerNote;
+        this.professionOne = professionOne;
+        this.professionTwo = professionTwo;
+        this.alternateCharacter = alternateCharacter;
+        this.wishList = wishList;
+    }
+
     @Override
     public String toString() {
-        return "CreateCharacterRequest{" +
+        return "UpdateCharacterRequest{" +
                 "username='" + username + '\'' +
                 ", characterName='" + characterName + '\'' +
                 ", publicNote='" + publicNote + '\'' +
@@ -116,7 +116,6 @@ public class CreateCharacterRequest {
         private String professionTwo;
         private Boolean alternateCharacter;
         private Set<String> wishList;
-
 
         public Builder withUsername(String username) {
             this.username = username;
@@ -178,8 +177,8 @@ public class CreateCharacterRequest {
             return this;
         }
 
-        public CreateCharacterRequest build() {
-            return new CreateCharacterRequest(username, characterName, characterClass, spec, role, race, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, wishList);
+        public UpdateCharacterRequest build() {
+            return new UpdateCharacterRequest(username, characterName, characterClass, spec, role, race, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, wishList);
         }
     }
 }
