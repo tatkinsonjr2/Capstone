@@ -1,5 +1,6 @@
 package sanctuaryraider.lambda;
 
+import com.amazonaws.services.dynamodbv2.xspec.S;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import sanctuaryraider.activity.requests.CreateCharacterRequest;
@@ -15,7 +16,7 @@ public class CreateCharacterLambda
         return super.runActivity(
                 () -> {
                     CreateCharacterRequest unauthenticatedRequest = input.fromBody(CreateCharacterRequest.class);
-                    return input.fromUserClaims(claims ->
+                   return input.fromUserClaims(claims ->
                             CreateCharacterRequest.builder()
                                     .withUsername(unauthenticatedRequest.getUsername())
                                     .withCharacterClass(unauthenticatedRequest.getCharacterClass())
@@ -31,8 +32,9 @@ public class CreateCharacterLambda
                                     .withWishList(unauthenticatedRequest.getWishList())
                                     .build());
                 },
-                (request, serviceComponent) ->
-                        serviceComponent.provideCreateCharacterActivity().handleRequest(request)
+                (request, serviceComponent) -> {
+                      return  serviceComponent.provideCreateCharacterActivity().handleRequest(request);
+                }
         );
     }
 }

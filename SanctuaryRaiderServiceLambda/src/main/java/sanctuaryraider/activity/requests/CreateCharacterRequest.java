@@ -1,10 +1,13 @@
 package sanctuaryraider.activity.requests;
 
 import com.amazonaws.services.dynamodbv2.xspec.S;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import java.util.Set;
-
+@JsonDeserialize(builder = CreateCharacterRequest.Builder.class)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateCharacterRequest {
 
     private final String username;

@@ -315,7 +315,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: SanctuaryRaiderServiceLambda
-      Handler: sanctuaryrauder.lambda.UpdatePlaylistLambda::handleRequest
+      Handler: sanctuaryraider.lambda.CreateCharacterLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -328,7 +328,7 @@ Resources:
           Type: Api
           Properties:
             Path: /characters
-            Method: put
+            Method: post
 #  AddSongToPlaylistLambda:
 #    Type: AWS::Serverless::Function
 #    Properties:

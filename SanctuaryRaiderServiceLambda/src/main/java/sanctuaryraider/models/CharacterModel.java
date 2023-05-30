@@ -15,11 +15,10 @@ public class CharacterModel {
     private final String officerNote;
     private final String professionOne;
     private final String professionTwo;
-    private final boolean alternateCharacter;
-    private final boolean archive;
+    private final Boolean alternateCharacter;
     private final Set<String> wishList;
 
-    public CharacterModel(String username, String characterName, String characterClass, String spec, String role, String race, String publicNote, String officerNote, String professionOne, String professionTwo, boolean alternateCharacter, boolean archive, Set<String> wishList) {
+    public CharacterModel(String username, String characterName, String characterClass, String spec, String role, String race, String publicNote, String officerNote, String professionOne, String professionTwo, Boolean alternateCharacter, Set<String> wishList) {
         this.username = username;
         this.characterName = characterName;
         this.characterClass = characterClass;
@@ -31,7 +30,6 @@ public class CharacterModel {
         this.professionOne = professionOne;
         this.professionTwo = professionTwo;
         this.alternateCharacter = alternateCharacter;
-        this.archive = archive;
         this.wishList = wishList;
     }
 
@@ -76,12 +74,8 @@ public class CharacterModel {
         return professionTwo;
     }
 
-    public boolean isAlternateCharacter() {
+    public Boolean isAlternateCharacter() {
         return alternateCharacter;
-    }
-
-    public boolean isArchive() {
-        return archive;
     }
 
     public Set<String> getWishList() {
@@ -120,8 +114,7 @@ public class CharacterModel {
         private String officerNote;
         private String professionOne;
         private String professionTwo;
-        private boolean alternateCharacter;
-        private boolean archive;
+        private Boolean alternateCharacter;
         private Set<String> wishList;
 
 
@@ -175,13 +168,8 @@ public class CharacterModel {
             return this;
         }
 
-        public Builder withAlternateCharacter(boolean alternateCharacter) {
+        public Builder withAlternateCharacter(Boolean alternateCharacter) {
             this.alternateCharacter = alternateCharacter;
-            return this;
-        }
-
-        public Builder withArchive(boolean archive) {
-            this.archive = archive;
             return this;
         }
 
@@ -191,7 +179,7 @@ public class CharacterModel {
         }
 
         public CharacterModel build() {
-            return new CharacterModel(username, characterName, characterClass, spec, role, race, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, archive, wishList);
+            return new CharacterModel(username, characterName, characterClass, spec, role, race, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, wishList);
         }
     }
 }
