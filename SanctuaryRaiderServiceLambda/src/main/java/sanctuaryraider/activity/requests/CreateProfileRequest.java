@@ -39,7 +39,7 @@ public class CreateProfileRequest {
         return "CreateProfileRequest{" +
                 "username='" + username + '\'' +
                 ", guild='" + guild + '\'' +
-                ", officerNote='" + publicNote + '\'' +
+                ", publicNote='" + publicNote + '\'' +
                 ", officerNote=" + officerNote +
                 '}';
     }

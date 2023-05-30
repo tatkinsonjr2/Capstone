@@ -1,10 +1,15 @@
-package sanctuaryraider.models;
+package sanctuaryraider.activity.requests;
 
-import java.util.List;
-import java.util.Objects;
+import com.amazonaws.services.dynamodbv2.xspec.S;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 import java.util.Set;
+@JsonDeserialize(builder = CreateCharacterRequest.Builder.class)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CreateCharacterRequest {
 
-public class CharacterModel {
     private final String username;
     private final String characterName;
     private final String characterClass;
@@ -18,7 +23,7 @@ public class CharacterModel {
     private final Boolean alternateCharacter;
     private final Set<String> wishList;
 
-    public CharacterModel(String username, String characterName, String characterClass, String spec, String role, String race, String publicNote, String officerNote, String professionOne, String professionTwo, Boolean alternateCharacter, Set<String> wishList) {
+    private CreateCharacterRequest(String username, String characterName, String characterClass, String spec, String role, String race, String publicNote, String officerNote, String professionOne, String professionTwo, Boolean alternateCharacter, Set<String> wishList){
         this.username = username;
         this.characterName = characterName;
         this.characterClass = characterClass;
@@ -32,7 +37,6 @@ public class CharacterModel {
         this.alternateCharacter = alternateCharacter;
         this.wishList = wishList;
     }
-
 
     public String getUsername() {
         return username;
@@ -74,7 +78,7 @@ public class CharacterModel {
         return professionTwo;
     }
 
-    public Boolean isAlternateCharacter() {
+    public Boolean getAlternateCharacter() {
         return alternateCharacter;
     }
 
@@ -83,27 +87,24 @@ public class CharacterModel {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        CharacterModel that = (CharacterModel) o;
-        return Objects.equals(username, that.username) && Objects.equals(characterName, that.characterName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(username, characterName);
+    public String toString() {
+        return "CreateCharacterRequest{" +
+                "username='" + username + '\'' +
+                ", characterName='" + characterName + '\'' +
+                ", publicNote='" + publicNote + '\'' +
+                ", officerNote=" + officerNote + '\'' + ", characterClass=" + characterClass + '\'' +
+                ", spec=" + spec +'\'' + ", role=" + role + '\'' + ", race=" + race + '\'' +
+                ", professionOne=" + professionOne + '\'' + ", professionTwo=" + professionTwo +'\'' +
+                ", alternateCharacter=" + alternateCharacter + '\'' + ", wishList=" + wishList +
+                '}';
     }
 
     public static Builder builder() {
         return new Builder();
     }
 
-    public static final class Builder {
+    @JsonPOJOBuilder
+    public static class Builder {
         private String username;
         private String characterName;
         private String characterClass;
@@ -178,8 +179,8 @@ public class CharacterModel {
             return this;
         }
 
-        public CharacterModel build() {
-            return new CharacterModel(username, characterName, characterClass, spec, role, race, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, wishList);
+        public CreateCharacterRequest build() {
+            return new CreateCharacterRequest(username, characterName, characterClass, spec, role, race, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, wishList);
         }
     }
 }
