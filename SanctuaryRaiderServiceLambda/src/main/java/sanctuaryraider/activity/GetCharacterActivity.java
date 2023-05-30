@@ -25,7 +25,7 @@ public class GetCharacterActivity {
 
 public GetCharacterResult handleRequest(final GetCharacterRequest getCharacterRequest){
         log.info("Received GetCharacterRequest {}", getCharacterRequest);
-        Character character = characterDao.getProfile(getCharacterRequest.getUsername(), getCharacterRequest.getCharacterName());
+        Character character = characterDao.getCharacter(getCharacterRequest.getUsername(), getCharacterRequest.getCharacterName());
         CharacterModel characterModel = new CharacterModelConverter().toCharacterModel(character);
 
         return GetCharacterResult.builder().withCharacter(characterModel).build();
