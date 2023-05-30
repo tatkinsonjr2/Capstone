@@ -32,9 +32,7 @@ public class CreateCharacterLambda
                                     .withWishList(unauthenticatedRequest.getWishList())
                                     .build());
                 },
-                (request, serviceComponent) -> {
-                      return  serviceComponent.provideCreateCharacterActivity().handleRequest(request);
-                }
+                (request, serviceComponent) -> serviceComponent.provideCreateCharacterActivity().handleRequest(request)
         );
     }
 }
