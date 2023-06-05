@@ -3,6 +3,8 @@ package sanctuaryraider.dynamodb.models;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
+import sanctuaryraider.converters.ZonedDateTimeConverter;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -27,6 +29,7 @@ public class Raid {
     public void setRaidName(String raidName) {
         this.raidName = raidName;
     }
+    @DynamoDBTypeConverted(converter = ZonedDateTimeConverter.class)
     @DynamoDBAttribute(attributeName = "date")
     public ZonedDateTime getDate() {
         return date;
