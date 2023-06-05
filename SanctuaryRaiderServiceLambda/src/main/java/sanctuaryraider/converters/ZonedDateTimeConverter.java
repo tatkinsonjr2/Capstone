@@ -8,7 +8,7 @@ public class ZonedDateTimeConverter implements DynamoDBTypeConverter<String, Zon
 
     @Override
     public String convert(final ZonedDateTime date){
-        return date.format(DateTimeFormatter.ISO_DATE);
+        return date.format(DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
     @Override
