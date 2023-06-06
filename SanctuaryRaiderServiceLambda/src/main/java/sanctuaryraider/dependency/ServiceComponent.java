@@ -24,4 +24,8 @@ public interface ServiceComponent {
     CreateCharacterActivity provideCreateCharacterActivity();
 
    UpdateCharacterActivity provideUpdateCharacterActivity();
+
+  CreateRaidActivity provideCreateRaidActivity();
+  GetRaidActivity provideGetRaidActivity();
+
 }

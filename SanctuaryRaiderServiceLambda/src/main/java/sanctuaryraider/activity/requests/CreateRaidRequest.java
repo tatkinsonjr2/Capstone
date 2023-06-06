@@ -1,30 +1,32 @@
-package sanctuaryraider.models;
+package sanctuaryraider.activity.requests;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.amazonaws.services.dynamodbv2.xspec.L;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import org.w3c.dom.stylesheets.LinkStyle;
-import sanctuaryraider.converters.LocalDateSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.sun.source.doctree.SeeTree;
+import net.bytebuddy.asm.Advice;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
-public class RaidModel {
+@JsonDeserialize(builder = CreateRaidRequest.Builder.class)
+public class CreateRaidRequest {
+
     private final String raidName;
-    private final String publicNote;
     private final LocalDate date;
+    private final String publicNote;
     private final String officerNote;
     private final String status;
     private final String instanceName;
     private final Set<String> attendees;
 
-    private RaidModel(String raidName, LocalDate date, String publicNote, String officerNote, String status, String instanceName, Set<String> attendees) {
+    private CreateRaidRequest(String raidName, LocalDate date, String publicNote, String officerNote, String status, String instanceName, Set<String> attendees){
         this.raidName = raidName;
-        this.publicNote = publicNote;
         this.date = date;
         this.officerNote = officerNote;
+        this.publicNote = publicNote;
         this.status = status;
         this.instanceName = instanceName;
         this.attendees = attendees;
@@ -34,13 +36,13 @@ public class RaidModel {
         return raidName;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
     public String getPublicNote() {
         return publicNote;
     }
-
-//    public LocalDate getDate() {
-//        return date;
-//    }
 
     public String getOfficerNote() {
         return officerNote;
@@ -58,34 +60,26 @@ public class RaidModel {
         return attendees;
     }
 
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        RaidModel raidModel = (RaidModel) o;
-        return Objects.equals(raidName, raidModel.raidName);
+    public String toString() {
+        return "CreateProfileRequest{" +
+                "raidName='" + raidName + '\'' +
+                ", date='" + date + '\'' +
+                ", status='" + status + '\'' +
+                ", instanceName='" + instanceName + '\'' +
+                ", attendees='" + attendees + '\'' +
+                ", publicNote='" + publicNote + '\'' +
+                ", officerNote=" + officerNote +
+                '}';
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(raidName,publicNote,date,officerNote,status,instanceName,attendees);
-    }
-
-    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }
-
-
+    @JsonPOJOBuilder
     public static class Builder {
         private String raidName;
-        private String publicNote;
         private LocalDate date;
+        private String publicNote;
         private String officerNote;
         private String status;
         private String instanceName;
@@ -97,13 +91,13 @@ public class RaidModel {
             return this;
         }
 
-        public Builder withPublicNote(String publicNote) {
-            this.publicNote = publicNote;
+        public Builder withDate(LocalDate date) {
+            this.date = date;
             return this;
         }
 
-        public Builder withDate(LocalDate date) {
-            this.date = date;
+        public Builder withPublicNote(String publicNote) {
+            this.publicNote = publicNote;
             return this;
         }
 
@@ -127,8 +121,8 @@ public class RaidModel {
             return this;
         }
 
-        public RaidModel build() {
-            return new RaidModel(raidName, date, publicNote, officerNote, status, instanceName, attendees);
+        public CreateRaidRequest build() {
+            return new CreateRaidRequest(raidName, date, publicNote, officerNote, status, instanceName, attendees);
         }
     }
 }

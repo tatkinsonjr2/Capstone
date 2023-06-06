@@ -20,14 +20,14 @@ public class GetCharacterResult {
         return "GetCharacterResult{" + "character=" + character + '}';
     }
 
-    public static GetCharacterResult.Builder builder(){
-        return new GetCharacterResult.Builder();
+    public static Builder builder(){
+        return new Builder();
     }
 
     public static class Builder{
         private CharacterModel character;
 
-        public GetCharacterResult.Builder withCharacter(CharacterModel character){
+        public Builder withCharacter(CharacterModel character){
             this.character = character;
             return this;
         }
