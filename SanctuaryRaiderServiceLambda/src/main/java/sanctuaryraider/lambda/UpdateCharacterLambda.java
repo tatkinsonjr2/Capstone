@@ -32,6 +32,4 @@ public class UpdateCharacterLambda extends LambdaActivityRunner<UpdateCharacterR
                         serviceComponent.provideUpdateCharacterActivity().handleRequest(request)
         );
     }
-
-
 }

@@ -28,4 +28,5 @@ public interface ServiceComponent {
   CreateRaidActivity provideCreateRaidActivity();
   GetRaidActivity provideGetRaidActivity();
 
+    UpdateRaidActivity provideUpdateRaidActivity();
 }
