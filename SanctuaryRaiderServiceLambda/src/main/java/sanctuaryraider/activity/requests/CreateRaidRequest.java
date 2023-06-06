@@ -1,23 +1,28 @@
 package sanctuaryraider.activity.requests;
 
+import com.amazonaws.services.dynamodbv2.xspec.L;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.sun.source.doctree.SeeTree;
+import net.bytebuddy.asm.Advice;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Set;
 
 @JsonDeserialize(builder = CreateRaidRequest.Builder.class)
 public class CreateRaidRequest {
 
     private final String raidName;
-    private final ZonedDateTime date;
+    private final LocalDate date;
     private final String publicNote;
     private final String officerNote;
     private final String status;
     private final String instanceName;
-    private final List<String> attendees;
+    private final Set<String> attendees;
 
-    private CreateRaidRequest(String raidName, ZonedDateTime date, String publicNote, String officerNote, String status, String instanceName, List<String> attendees){
+    private CreateRaidRequest(String raidName, LocalDate date, String publicNote, String officerNote, String status, String instanceName, Set<String> attendees){
         this.raidName = raidName;
         this.date = date;
         this.officerNote = officerNote;
@@ -31,7 +36,7 @@ public class CreateRaidRequest {
         return raidName;
     }
 
-    public ZonedDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -51,7 +56,7 @@ public class CreateRaidRequest {
         return instanceName;
     }
 
-    public List<String> getAttendees() {
+    public Set<String> getAttendees() {
         return attendees;
     }
 
@@ -73,12 +78,12 @@ public class CreateRaidRequest {
     @JsonPOJOBuilder
     public static class Builder {
         private String raidName;
-        private ZonedDateTime date;
+        private LocalDate date;
         private String publicNote;
         private String officerNote;
         private String status;
         private String instanceName;
-        private List<String> attendees;
+        private Set<String> attendees;
 
 
         public Builder withRaidName(String raidName) {
@@ -86,7 +91,7 @@ public class CreateRaidRequest {
             return this;
         }
 
-        public Builder withDate(ZonedDateTime date) {
+        public Builder withDate(LocalDate date) {
             this.date = date;
             return this;
         }
@@ -111,7 +116,7 @@ public class CreateRaidRequest {
             return this;
         }
 
-        public Builder withAttendees(List<String> attendees) {
+        public Builder withAttendees(Set<String> attendees) {
             this.attendees = attendees;
             return this;
         }
