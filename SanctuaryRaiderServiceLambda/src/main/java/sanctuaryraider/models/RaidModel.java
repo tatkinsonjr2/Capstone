@@ -1,21 +1,26 @@
 package sanctuaryraider.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.w3c.dom.stylesheets.LinkStyle;
+import sanctuaryraider.converters.LocalDateSerializer;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class RaidModel {
     private final String raidName;
     private final String publicNote;
-    private final ZonedDateTime date;
+    private final LocalDate date;
     private final String officerNote;
     private final String status;
     private final String instanceName;
-    private final List<String> attendees;
+    private final Set<String> attendees;
 
-    private RaidModel(String raidName, ZonedDateTime date, String publicNote, String officerNote, String status, String instanceName, List<String> attendees) {
+    private RaidModel(String raidName, LocalDate date, String publicNote, String officerNote, String status, String instanceName, Set<String> attendees) {
         this.raidName = raidName;
         this.publicNote = publicNote;
         this.date = date;
@@ -33,9 +38,9 @@ public class RaidModel {
         return publicNote;
     }
 
-    public ZonedDateTime getDate() {
-        return date;
-    }
+//    public LocalDate getDate() {
+//        return date;
+//    }
 
     public String getOfficerNote() {
         return officerNote;
@@ -49,7 +54,7 @@ public class RaidModel {
         return instanceName;
     }
 
-    public List<String> getAttendees() {
+    public Set<String> getAttendees() {
         return attendees;
     }
 
@@ -68,7 +73,7 @@ public class RaidModel {
 
     @Override
     public int hashCode() {
-        return Objects.hash(raidName);
+        return Objects.hash(raidName,publicNote,date,officerNote,status,instanceName,attendees);
     }
 
     //CHECKSTYLE:OFF:Builder
@@ -80,13 +85,11 @@ public class RaidModel {
     public static class Builder {
         private String raidName;
         private String publicNote;
-        private ZonedDateTime date;
+        private LocalDate date;
         private String officerNote;
         private String status;
         private String instanceName;
-        private List<String> attendees;
-
-
+        private Set<String> attendees;
 
 
         public Builder withRaidName(String raidName) {
@@ -99,7 +102,7 @@ public class RaidModel {
             return this;
         }
 
-        public Builder withDate(ZonedDateTime date) {
+        public Builder withDate(LocalDate date) {
             this.date = date;
             return this;
         }
@@ -119,7 +122,7 @@ public class RaidModel {
             return this;
         }
 
-        public Builder withAttendees(List<String> attendees) {
+        public Builder withAttendees(Set<String> attendees) {
             this.attendees = attendees;
             return this;
         }

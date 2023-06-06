@@ -350,12 +350,12 @@ Resources:
             Path: /characters/{username}/{characterName}
             Method: put
 
-  CreateRaidLambda:
+  GetRaidLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: SanctuaryRaiderServiceLambda
-      Handler: sanctuaryraider.lambda.CreateRaidLambda::handleRequest
+      Handler: sanctuaryraider.lambda.GetRaidLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -367,8 +367,8 @@ Resources:
         MusicPlaylistService:
           Type: Api
           Properties:
-            Path: /raids
-            Method: post
+            Path: /raids/{raidName}
+            Method: get
 
   #-----------------------------------------------------
   # DynamoDB Configuration

@@ -36,7 +36,7 @@
       "PutRequest": {
         "Item": {
           "raidName": {"S": "Quick Ulduar"},
-          "date": {"N": "052323"},
+          "date": {"S": "2023-05-23"},
           "publicNote": {"S": "Had tons of noobs in this"},
           "officerNote": {"S": "These kids are bad."},
           "status": {"S": "Completed"},
