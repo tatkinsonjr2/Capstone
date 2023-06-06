@@ -27,7 +27,10 @@ public class GetRaidActivity {
         Raid raid = raidDao.getRaid(requestedRaidName);
         RaidModel raidModel = new RaidModelConverter().toRaidModel(raid);
 
+
         return GetRaidResult.builder().withRaid(raidModel).build();
+
+
     }
 
 }
