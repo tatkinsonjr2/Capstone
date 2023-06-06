@@ -31,8 +31,6 @@ public class ProfileModel {
         return officerNote;
     }
 
-
-
     @Override
     public int hashCode() {
         return Objects.hash(username, guild);
