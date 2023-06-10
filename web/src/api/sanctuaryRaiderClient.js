@@ -16,7 +16,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'createCharacter', 'createProfile', 'createRaid', 'createCharacter', 'getProfile', 'getRaid', 'getCharacter', 'updateCharacter', 'updateProfile', 'updateRaid'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'createProfile', 'createRaid', 'createCharacter', 'getProfile', 'getRaid', 'getCharacter', 'updateCharacter', 'updateProfile', 'updateRaid'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -82,7 +82,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
         try {
             const token = await this.getTokenOrThrow("Must be signed in to create a character.")
             const response = await this.axiosClient.post(`characters`, {
-            userName: userName,
+            username: username,
             characterName: characterName,
             characterClass: characterClass,
             spec: spec,
@@ -114,11 +114,11 @@ export default class SanctuaryRaiderClient extends BindingClass {
      * @param errorCallback (Optional) A function to execute if the call fails.
      * @returns a new profile.
      */
-    async createProfile(userName, guild, publicNote, officerNote, errorCallback) {
+    async createProfile(username, guild, publicNote, officerNote, errorCallback) {
         try {
             const token = await this.getTokenOrThrow("Must be signed in to create a profile.")
             const response = await this.axiosClient.post(`profiles`, {
-                userName: userName,
+                username: username,
                 guild: guild,
                 publicNote: publicNote,
                 officerNote: officerNote,
@@ -151,58 +151,155 @@ export default class SanctuaryRaiderClient extends BindingClass {
                 attendees: attendees,
             }, {
                 headers: {
-                    Authorization: `Bearer {$token}`
+                    Authorization: 'Bearer ${token}'
                 }
             });
-            return response.data.playlist;
+            return response.data.raid;
         } catch (error) {
             this.handleError(error, errorCallback)
         }
     }
 
     /**
-     * Add a song to a playlist.
-     * @param id The id of the playlist to add a song to.
-     * @param asin The asin that uniquely identifies the album.
-     * @param trackNumber The track number of the song on the album.
-     * @returns The list of songs on a playlist.
+     * Get a profile using the unique username.
+     * @param username The unique name of the profile.
+     * @returns The requested profile.
      */
-    async addSongToPlaylist(id, asin, trackNumber, errorCallback) {
+    async getProfile(username, errorCallback) {
         try {
-            const token = await this.getTokenOrThrow("Only authenticated users can add a song to a playlist.");
-            const response = await this.axiosClient.post(`playlists/${id}/songs`, {
-                id: id,
-                asin: asin,
-                trackNumber: trackNumber
+            const token = await this.getTokenOrThrow("Must be signed in to view this profile.");
+            const response = await this.axiosClient.get(`profiles/${username}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data.profile;
+        } catch (error) {
+            this.handleError(error, errorCallback)
+        }
+    }
+
+        /**
+         * Get a raid using the unique raidName.
+         * @param raidName The unique name of the raid.
+         * @returns The requested raid.
+         */
+        async getRaid(raidName, errorCallback) {
+            try {
+                const token = await this.getTokenOrThrow("Must be signed in to view this profile.");
+                const response = await this.axiosClient.get(`raids/${raidName}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                return response.data.raid;
+            } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+        }
+
+        /**
+         * Get a character using the unique characterName.
+         * @param characterName The unique name of the character.
+         * @returns The requested character.
+         */
+        async getCharacter(characterName, errorCallback) {
+            try {
+                const token = await this.getTokenOrThrow("Must be signed in to view this profile.");
+                const response = await this.axiosClient.get(`/characters/${characterName}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                return response.data.character;
+            } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+        }
+
+  /**
+     * Update an existing character's details on a character in the database.
+     * @param errorCallback (Optional) A function to execute if the call fails.
+     * @returns The character that has been updated.
+     */
+    async updateCharacter(username, characterName, title, characterClass, spec, race, role, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, wishList, errorCallback) {
+        try {
+            const token = await this.getTokenOrThrow("Only authenticated users can update a character.");
+            const response = await this.axiosClient.put(`/character/${username}/${characterName}`, {
+                username: username,
+                characterName: characterName,
+                characterClass: characterClass,
+                spec: spec,
+                race: race,
+                role: role,
+                publicNote: publicNote,
+                officerNote: officerNote,
+                professionOne: professionOne,
+                professionTwo: professionTwo,
+                alternateCharacter: alternateCharacter,
+                wishList: wishList,
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            return response.data.songList;
+            return response.data.character;
         } catch (error) {
             this.handleError(error, errorCallback)
         }
     }
 
-    /**
-     * Search for a soong.
-     * @param criteria A string containing search criteria to pass to the API.
-     * @returns The playlists that match the search criteria.
-     */
-    async search(criteria, errorCallback) {
+        /**
+         * Update an existing profile's details on a profile in the database.
+         * @param errorCallback (Optional) A function to execute if the call fails.
+         * @returns The profile that has been updated.
+         */
+    async updateProfile(username, guild, publicNote, officerNote, errorCallback) {
         try {
-            const queryParams = new URLSearchParams({ q: criteria })
-            const queryString = queryParams.toString();
-
-            const response = await this.axiosClient.get(`playlists/search?${queryString}`);
-
-            return response.data.playlists;
+            const token = await this.getTokenOrThrow("Only authenticated users can update a profile.");
+            const response = await this.axiosClient.put(`/profiles/{username}`, {
+                username: username,
+                guild: guild,
+                publicNote: publicNote,
+                officerNote: status,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data.profile;
         } catch (error) {
             this.handleError(error, errorCallback)
         }
-
     }
+
+       /**
+         * Update an existing raid's details on a raid in the database.
+         * @param errorCallback (Optional) A function to execute if the call fails.
+         * @returns The raid that has been updated.
+         */
+        async updateRaid(raidName, date, publicNote, officerNote, status, instanceName, attendees, errorCallback) {
+            try {
+                const token = await this.getTokenOrThrow("Only authenticated users can update a raid.");
+                const response = await this.axiosClient.put(`/raids/{raidName}`, {
+                    raidName: raidName,
+                    date: date,
+                    publicNote: publicNote,
+                    officerNote: officerNote,
+                    status: status,
+                    instanceName: instanceName,
+                    attendees: attendees,
+
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                return response.data.profile;
+            } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+        }
 
     /**
      * Helper method to log the error and run any error functions.
