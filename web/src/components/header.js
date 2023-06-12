@@ -1,5 +1,6 @@
 import MusicPlaylistClient from '../api/musicPlaylistClient';
 import BindingClass from "../util/bindingClass";
+import SanctuaryRaiderClient from "../api/sanctuaryRaiderClient";
 
 /**
  * The header component for the website.
@@ -14,7 +15,7 @@ export default class Header extends BindingClass {
         ];
         this.bindClassMethods(methodsToBind, this);
 
-        this.client = new MusicPlaylistClient();
+        this.client = new SanctuaryRaiderClient();
     }
 
     /**
@@ -23,18 +24,17 @@ export default class Header extends BindingClass {
     async addHeaderToPage() {
         const currentUser = await this.client.getIdentity();
 
-        const siteTitle = this.createSiteTitle();
+
         const userInfo = this.createUserInfoForHeader(currentUser);
 
         const header = document.getElementById('header');
-        header.appendChild(siteTitle);
         header.appendChild(userInfo);
     }
 
     createSiteTitle() {
         const homeButton = document.createElement('a');
         homeButton.classList.add('header_home');
-        homeButton.href = 'index.html';
+        homeButton.href = 'deprcatedIndex.html';
         homeButton.innerText = 'Playlists';
 
         const siteTitle = document.createElement('div');
@@ -47,6 +47,8 @@ export default class Header extends BindingClass {
     createUserInfoForHeader(currentUser) {
         const userInfo = document.createElement('div');
         userInfo.classList.add('user');
+
+
 
         const childContent = currentUser
             ? this.createLogoutButton(currentUser)
@@ -67,6 +69,7 @@ export default class Header extends BindingClass {
 
     createButton(text, clickHandler) {
         const button = document.createElement('a');
+        button.classList.add("btn","btn-secondary","btn-lg", "link-light");
         button.classList.add('button');
         button.href = '#';
         button.innerText = text;
