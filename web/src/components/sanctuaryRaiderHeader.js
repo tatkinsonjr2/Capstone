@@ -1,4 +1,4 @@
-import MusicPlaylistClient from '../api/sanctuaryRaiderClient';
+import SanctuaryRaiderClient from '../api/sanctuaryRaiderClient';
 import BindingClass from "../util/bindingClass";
 
 /**
@@ -27,6 +27,7 @@ export default class Header extends BindingClass {
         const userInfo = this.createUserInfoForHeader(currentUser);
 
         const header = document.getElementById('header');
+        const navbar = document.getElementById('navigation bar');
         header.appendChild(siteTitle);
         header.appendChild(userInfo);
     }

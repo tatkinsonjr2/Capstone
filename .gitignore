@@ -20,5 +20,6 @@ build
 logs
 node_modules
 
+web/node_modules
 .env*
 bin
