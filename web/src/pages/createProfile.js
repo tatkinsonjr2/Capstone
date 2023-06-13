@@ -17,7 +17,9 @@ class CreateProfile extends BindingClass{
      */
 
     mount() {
+        document.getElementById("create").addEventListener("click", this.submit);
         this.client = new SanctuaryRaiderClient();
+
     }
 
     /**
