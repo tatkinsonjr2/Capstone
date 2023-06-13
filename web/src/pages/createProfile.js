@@ -46,6 +46,7 @@ class CreateProfile extends BindingClass{
         });
         this.dataStore.set('profile', profile);
         console.log("complete");
+        alert('Profile has been saved successfully')
     }
 
     /**

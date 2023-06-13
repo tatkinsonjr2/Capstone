@@ -7,6 +7,7 @@
     <script type="text/javascript" src="asset/createProfile.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
 <!-- NavBar -->
@@ -32,13 +33,38 @@
                <div class="col-lg-6">
                    <form>
                        <label for="username" class="form-label">Username:</label>
-                       <input type="text" class="form-control" id="username" placeholder="DO NOT use a character name">
+                       <div class="mb-4 input-group">
+                             <span class="input-group-text">
+                                 <i class="bi bi-person-fill"></i>
+                           </span>
+                        <input type="text" class="form-control" id="username" placeholder="DO NOT use a character name">
+                       </div>
+
                        <label for="guild" class="form-label">Guild Name:</label>
-                       <input type="text" class="form-control" id="guild">
+                       <div class="input-group mb-4">
+                           <span class="input-group-text">
+                              <i class="bi bi-chat-left-dots"></i>
+                           </span>
+                           <input type="text" class="form-control" id="guild">
+                       </div>
+
+
                        <label for="publicNote" class="form-label">Public Note:</label>
+                       <div class="input-group mb-4">
+                           <span class="input-group-text">
+                               <i class="bi bi-chat-square-text-fill"></i>
+                           </span>
                        <input type="text" class="form-control" id="publicNote">
+                       </div>
+
+
                        <label for="OfficerNote" class="form-label">Officer Note:</label>
+                       <div class="input-group mb-4">
+                           <span class="input-group-text">
+                               <i class="bi bi-shield-fill"></i>
+                           </span>
                        <input type="text" class="form-control" id="OfficerNote" placeholder="Only admin/officers can see this text">
+                       </div>
                    </form>
 
                    <div class="mb-4 text-center">
@@ -48,5 +74,4 @@
            </div>
        </div>
    </section>
-
 </body>
