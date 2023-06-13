@@ -13,18 +13,40 @@
 <header class="navbar" id="header">
     <nav class="navbar" id="navigation bar">
         <div class="container-xxl">
-            <a href="#sign-in" class="navbar-brand">
+            <a href="#" class="navbar-brand">
                 <span class="fw-bold text-secondary">
                 Sanctuary Raider
                 </span>
             </a>
-
+        </div>
+    </nav>
+</header>
 <!--  createProfile Main Form -->
    <section id="create-profile-form">
        <div class="container-lg">
-
+            <div class="text-center">
+                <h2>Create Your Profile!</h2>
        </div>
+           <div class="row justify-content-center my-5">
 
+               <div class="col-lg-6">
+                   <form>
+                       <label for="username" class="form-label">Username:</label>
+                       <input type="text" class="form-control" id="username" placeholder="DO NOT use a character name">
+                       <label for="guild" class="form-label">Guild Name:</label>
+                       <input type="text" class="form-control" id="guild">
+                       <label for="publicNote" class="form-label">Public Note:</label>
+                       <input type="text" class="form-control" id="publicNote">
+                       <label for="OfficerNote" class="form-label">Officer Note:</label>
+                       <input type="text" class="form-control" id="OfficerNote" placeholder="Only admin/officers can see this text">
+                   </form>
+
+                   <div class="mb-4 text-center">
+                       <button type="submit" class="btn btn-secondary" id="create">Submit</button>
+                   </div>
+               </div>
+           </div>
+       </div>
    </section>
 
 </body>
