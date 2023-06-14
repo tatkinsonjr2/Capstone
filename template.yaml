@@ -410,6 +410,28 @@ Resources:
             Path: /raids/{raidName}
             Method: put
 
+  GetAllCharactersLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Role: !GetAtt AccessRole.Arn
+      CodeUri: SanctuaryRaiderServiceLambda
+      Handler: sanctuaryraider.lambda.GetAllCharactersLambda::handleRequest
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+      Events:
+        SanctuaryRaiderService:
+          Type: Api
+          Properties:
+            Path: /profiles/{username}/characters
+            Method: get
+            Auth:
+              Authorizer: 'NONE'
+
   #-----------------------------------------------------
   # DynamoDB Configuration
   #-----------------------------------------------------
