@@ -6,7 +6,7 @@ import DataStore from "../util/DataStore";
 class CreateProfile extends BindingClass{
     constructor() {
         super();
-        this.bindClassMethods([mount, submit, 'redirectToViewProfile'], this);
+        this.bindClassMethods(['mount', 'submit', 'redirectToViewProfile'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.redirectToViewProfile);
         this.header = new Header(this.dataStore);
@@ -15,11 +15,9 @@ class CreateProfile extends BindingClass{
     /**
      * Load the SanctuaryRaiderClient
      */
-
     mount() {
         document.getElementById("create").addEventListener("click", this.submit);
         this.client = new SanctuaryRaiderClient();
-
     }
 
     /**
@@ -61,5 +59,14 @@ class CreateProfile extends BindingClass{
             window.location.href = `/viewProfile.html?username=${profile.username}`;
         }
     }
-
 }
+
+/**
+ * Main method to run when the page contents have loaded
+ */
+const main = async() => {
+    const createProfile = new CreateProfile();
+    createProfile.mount();
+};
+
+window.addEventListener('DOMContentLoaded',main);
