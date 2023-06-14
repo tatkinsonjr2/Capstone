@@ -1,9 +1,7 @@
 package sanctuaryraider.dependency;
 
-import com.amazonaws.services.lambda.runtime.RequestHandler;
 import dagger.Component;
 import sanctuaryraider.activity.*;
-import sanctuaryraider.activity.requests.*;
 
 import javax.inject.Singleton;
 
@@ -28,5 +26,7 @@ public interface ServiceComponent {
   CreateRaidActivity provideCreateRaidActivity();
   GetRaidActivity provideGetRaidActivity();
 
-    UpdateRaidActivity provideUpdateRaidActivity();
+  UpdateRaidActivity provideUpdateRaidActivity();
+
+  GetAllCharactersActivity provideGetAllCharactersActivity();
 }
