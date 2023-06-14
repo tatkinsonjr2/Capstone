@@ -1,13 +1,18 @@
 package sanctuaryraider.dynamodb.dao;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedQueryList;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import sanctuaryraider.dynamodb.models.Character;
 import sanctuaryraider.dynamodb.models.Profile;
 import sanctuaryraider.exceptions.CharacterNotFoundException;
 
 import javax.inject.Inject;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CharacterDao {
     private final DynamoDBMapper dynamoDBMapper;
@@ -34,8 +39,24 @@ public class CharacterDao {
         this.dynamoDBMapper.delete(character);
     }
 
-    public List<Character> getAllCharacters(){
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
-        return dynamoDBMapper.scan(Character.class, scanExpression);
+    public List<Character> getAllCharactersForUsername(String username){
+
+        if (username == null) {
+        throw new IllegalArgumentException("passed in username is null");
+    }
+        Map<String, AttributeValue> valueMap = new HashMap<>();
+        valueMap.put(":username", new AttributeValue().withS(username));
+
+        DynamoDBQueryExpression<Character> queryExpression = new DynamoDBQueryExpression<Character>()
+                .withKeyConditionExpression("username = :username")
+                .withExpressionAttributeValues(valueMap);
+
+        PaginatedQueryList<Character> characters = dynamoDBMapper.query(Character.class, queryExpression);
+
+        if(characters == null) {
+            throw new CharacterNotFoundException("characters not found for requested projectId");
+        }
+
+        return characters;
     }
 }

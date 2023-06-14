@@ -1,4 +1,3 @@
-import MusicPlaylistClient from '../api/musicPlaylistClient';
 import Header from '../components/header';
 import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
@@ -23,7 +22,7 @@ The "KEY" constants will be reused a few times below.
 //
 
 /**
- * Logic needed for the view playlist page of the website.
+ * Logic needed for the landing page of the website.
  */
 class SearchPlaylists extends BindingClass {
     constructor() {
