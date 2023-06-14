@@ -96,7 +96,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
             wishList: wishList,
             }, {
                 headers: {
-                    Authorization: 'Bearer ${token}'
+                    Authorization: `Bearer ${token}`
                 }
             });
             return response.data.character;
@@ -124,7 +124,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
                 officerNote: officerNote,
             }, {
                 headers: {
-                    Authorization: 'Bearer ${token}'
+                    Authorization: `Bearer ${token}`
                 }
             });
             return response.data.profile;
@@ -151,7 +151,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
                 attendees: attendees,
             }, {
                 headers: {
-                    Authorization: 'Bearer ${token}'
+                    Authorization: `Bearer ${token}`
                 }
             });
             return response.data.raid;

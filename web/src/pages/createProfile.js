@@ -37,7 +37,7 @@ class CreateProfile extends BindingClass{
         const username = document.getElementById('username').value;
         const guild = document.getElementById('guild').value;
         const publicNote = document.getElementById('public-note').value;
-        const officerNote = document.getElementById('').value;
+        const officerNote = document.getElementById('officer-note').value;
 
         const profile = await this.client.createProfile(username,guild,publicNote,officerNote, (error) => {
             createButton.innerText = origButtonText;
@@ -69,4 +69,4 @@ const main = async() => {
     createProfile.mount();
 };
 
-window.addEventListener('DOMContentLoaded',main);
+window.addEventListener('DOMContentLoaded', main);
