@@ -47,6 +47,6 @@ public class GetAllRaidsByCharacterNameActivity {
         return GetAllRaidsByCharacterNameResult.builder()
                 .withRaids(raidModels)
                 .build();
-    }
 
+    }
 }

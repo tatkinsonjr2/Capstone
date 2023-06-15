@@ -46,15 +46,17 @@ public class RaidDao {
         if(characterName == null){
         throw new IllegalArgumentException("passed in character name is null");
         }
-//        Character character = dynamoDBMapper.load(Character.class, characterName);
-        List<Raid> allRaids = dynamoDBMapper.load(getAllRaids());
+
+        List<Raid> allRaids = getAllRaids();
         List<Raid> attendeeMatch = new ArrayList<>();
         for(Raid raid : allRaids){
            Set<String> attendees = raid.getAttendees();
+           if(attendees != null) {
            for(String attendee : attendees){
-               if(attendee.equals(characterName)){
+               if(attendee != null && attendee.contains(characterName)){
                    attendeeMatch.add(raid);
                }
+             }
            }
         }
         return attendeeMatch;

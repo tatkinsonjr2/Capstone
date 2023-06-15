@@ -1,13 +1,6 @@
 package sanctuaryraider.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import org.w3c.dom.stylesheets.LinkStyle;
-import sanctuaryraider.converters.LocalDateSerializer;
-
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -37,10 +30,9 @@ public class RaidModel {
     public String getPublicNote() {
         return publicNote;
     }
-
-//    public LocalDate getDate() {
-//        return date;
-//    }
+    public LocalDate getDate() {
+        return date;
+    }
 
     public String getOfficerNote() {
         return officerNote;
