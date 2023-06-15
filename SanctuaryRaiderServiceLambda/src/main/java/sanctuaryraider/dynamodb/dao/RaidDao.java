@@ -41,7 +41,9 @@ public class RaidDao {
         return dynamoDBMapper.scan(Raid.class, scanExpression);
     }
 
-    public List<Raid> getAllRaidsByCharacterName(){
-
+    public List<Raid> getAllRaidsByCharacterName(String characterName){
+        if(characterName == null){
+        throw new IllegalArgumentException("passed in character name is null");
+        }
     }
 }
