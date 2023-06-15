@@ -27,11 +27,11 @@ public class GetAllCharactersActivity {
     }
 
     /**
-     * This method handles the incoming request by retrieving the tickets from the database.
+     * This method handles the incoming request by retrieving the characters from the database.
      * <p>
      * It then returns the tickets list.
      * <p>
-     * If the ticket does not exist, this should throw a TicketNotFound.
+     * If the character does not exist, this should throw a CharacterNotFoundException.
      *
      * @param getAllCharactersRequest request object containing the project ID
      * @return getAllCharactersResult result object containing the ticketModel list of API defined {@link CharacterModel}s

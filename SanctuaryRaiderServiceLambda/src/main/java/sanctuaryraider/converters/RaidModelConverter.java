@@ -3,6 +3,9 @@ package sanctuaryraider.converters;
 import sanctuaryraider.dynamodb.models.Raid;
 import sanctuaryraider.models.RaidModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RaidModelConverter {
     /**
      * Converts between Data and API models.
@@ -24,5 +27,12 @@ public class RaidModelConverter {
                 .withAttendees(raid.getAttendees())
                 .build();
     }
+    public List<RaidModel> toRaidModelList(List<Raid> raids){
+        List<RaidModel> raidModels = new ArrayList<>();
 
+        for(Raid raid : raids){
+            raidModels.add(toRaidModel(raid));
+        }
+        return raidModels;
+    }
 }
