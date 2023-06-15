@@ -2,12 +2,13 @@ package sanctuaryraider.dynamodb.dao;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
-import com.amazonaws.services.dynamodbv2.xspec.NULL;
 import sanctuaryraider.dynamodb.models.Raid;
 import sanctuaryraider.exceptions.RaidNotFoundException;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class RaidDao {
 
@@ -45,5 +46,17 @@ public class RaidDao {
         if(characterName == null){
         throw new IllegalArgumentException("passed in character name is null");
         }
+//        Character character = dynamoDBMapper.load(Character.class, characterName);
+        List<Raid> allRaids = dynamoDBMapper.load(getAllRaids());
+        List<Raid> attendeeMatch = new ArrayList<>();
+        for(Raid raid : allRaids){
+           Set<String> attendees = raid.getAttendees();
+           for(String attendee : attendees){
+               if(attendee.equals(characterName)){
+                   attendeeMatch.add(raid);
+               }
+           }
+        }
+        return attendeeMatch;
     }
 }
