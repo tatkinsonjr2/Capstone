@@ -16,7 +16,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'createProfile', 'createRaid', 'createCharacter', 'getProfile', 'getRaid', 'getCharacter', 'updateCharacter', 'updateProfile', 'updateRaid'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'createProfile', 'createRaid', 'createCharacter', 'getProfile', 'getRaid', 'getCharacter', 'getAllCharactersByUsername', 'updateCharacter', 'updateProfile', 'updateRaid'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -225,7 +225,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
     async updateCharacter(username, characterName, title, characterClass, spec, race, role, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, wishList, errorCallback) {
         try {
             const token = await this.getTokenOrThrow("Only authenticated users can update a character.");
-            const response = await this.axiosClient.put(`/character/${username}/${characterName}`, {
+            const response = await this.axiosClient.put(`/characters/${username}/${characterName}`, {
                 username: username,
                 characterName: characterName,
                 characterClass: characterClass,
@@ -261,7 +261,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
                 username: username,
                 guild: guild,
                 publicNote: publicNote,
-                officerNote: status,
+                officerNote: officerNote,
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -295,7 +295,16 @@ export default class SanctuaryRaiderClient extends BindingClass {
                         Authorization: `Bearer ${token}`
                     }
                 });
-                return response.data.profile;
+                return response.data.raid;
+            } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+        }
+
+        async getAllCharactersByUsername(username){
+            try {
+                const response = await this.axiosClient.get(`profiles/${username}/characters`);
+                return response.data.characters;
             } catch (error) {
                 this.handleError(error, errorCallback)
             }

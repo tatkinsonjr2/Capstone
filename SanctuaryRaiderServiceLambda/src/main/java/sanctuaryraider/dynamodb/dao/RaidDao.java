@@ -40,4 +40,8 @@ public class RaidDao {
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
         return dynamoDBMapper.scan(Raid.class, scanExpression);
     }
+
+    public List<Raid> getAllRaidsByCharacterName(){
+
+    }
 }

@@ -6,7 +6,11 @@ import DataStore from "../util/DataStore";
 class ViewProfile extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['getProfileForPage', 'getCharactersForProfile',''])
+        this.bindClassMethods(['mount', 'getProfileForPage', 'getCharactersForPage','getRaidsForPage', 'createProfileTable', 'createCharactersTable','createRaidsTable', 'addProfileToPage', 'addCharactersToPage', 'addRaidsToPage'], this)
+        this.dataStore = new DataStore();
+        this.dataStore.addChangeListener(this.addProfileToPage);
+        this.dataStore.addChangeListener(this.addCharactrersToPage);
+        this.dataStore.addChangeListener(this.addRaidsToPage);
     }
 
     async getProfileForPage(){
@@ -17,9 +21,16 @@ class ViewProfile extends BindingClass {
         console.log('profile has been stored');
     }
 
-    async getCharactersForProfile() {
+    async getCharactersForPage() {
         const urlParams = new URLSearchParams(window.location.search);
         const username = urlParams.get('username');
-        const characters = await this.client.getAllCharacters
+        const characters = await this.client.getAllCharactersByUsername(username);
+        this.dataStore.set('characterList',characters);
+        console.log("characters are stored");
+    }
+
+    async getRaidsForPage(){
+        const urlParams = new URLSearchParams(window.location.search);
+        const
     }
 }
