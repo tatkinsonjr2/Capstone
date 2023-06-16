@@ -16,14 +16,16 @@ public class GetAllRaidsByCharacterNameLambda
     @Override
     public LambdaResponse handleRequest(LambdaRequest<GetAllRaidsByCharacterNameRequest> input, Context context) {
         log.info("handleRequest");
-        return super.runActivity(
+       return super.runActivity(
                 () -> input.fromPath(path ->
                         GetAllRaidsByCharacterNameRequest.builder()
                                 .withCharacterName(path.get("characterName"))
                                 .build()),
                 (request, serviceComponent) ->
-                        serviceComponent.provideGetAllRaidsByCharacterNameActivity().handleRequest(request)
+                    serviceComponent.provideGetAllRaidsByCharacterNameActivity().handleRequest(request)
+
+
         );
+      }
     }
-}
 

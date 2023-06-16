@@ -3,6 +3,7 @@ package sanctuaryraider.lambda;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +19,7 @@ import static sanctuaryraider.utils.NullUtils.ifNull;
  */
 public class LambdaRequest<T> extends APIGatewayProxyRequestEvent {
 
-    protected static final ObjectMapper MAPPER = new ObjectMapper();
+    protected static final ObjectMapper MAPPER = JsonMapper.builder().findAndAddModules().build();
     protected final Logger log = LogManager.getLogger();
 
     /**

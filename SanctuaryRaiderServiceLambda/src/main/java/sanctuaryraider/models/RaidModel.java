@@ -1,5 +1,7 @@
 package sanctuaryraider.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
@@ -7,6 +9,7 @@ import java.util.Set;
 public class RaidModel {
     private final String raidName;
     private final String publicNote;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private final LocalDate date;
     private final String officerNote;
     private final String status;
