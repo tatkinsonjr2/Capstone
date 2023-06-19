@@ -16,7 +16,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'createProfile', 'createRaid', 'createCharacter', 'getProfile', 'getRaid', 'getCharacter', 'getAllCharactersByUsername', 'updateCharacter', 'updateProfile', 'updateRaid'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'createProfile', 'createRaid', 'createCharacter', 'getProfile', 'getRaid', 'getCharacter', 'getAllCharactersByUsername', 'updateCharacter', 'updateProfile', 'updateRaid', 'getAllRaidsByCharacterName'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -306,6 +306,15 @@ export default class SanctuaryRaiderClient extends BindingClass {
                 const response = await this.axiosClient.get(`profiles/${username}/characters`);
                 return response.data.characters;
             } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+        }
+
+        async getAllRaidsByCharacterName(characterName){
+            try{
+                const response = await this.axiosClient.get(`characters/${characterName}/raids`);
+                return response.data.raids;
+            } catch (error){
                 this.handleError(error, errorCallback)
             }
         }
