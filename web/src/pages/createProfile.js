@@ -39,7 +39,7 @@ class CreateProfile extends BindingClass{
         const publicNote = document.getElementById('public-note').value;
         const officerNote = document.getElementById('officer-note').value;
 
-        const profile = await this.client.createProfile(username,guild,publicNote,officerNote, (error) => {
+        const profile = await this.client.createProfile(username, guild, publicNote, officerNote, (error) => {
             createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');

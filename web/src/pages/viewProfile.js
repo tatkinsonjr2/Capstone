@@ -7,10 +7,11 @@ import * as url from "url";
 class ViewProfile extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'getProfileForPage', 'getCharactersForPage', 'getRaidsForPage', 'createProfileTable', 'createCharactersTable', 'createRaidsTable', 'addProfileToPage', 'addCharactersToPage', 'addRaidsToPage'], this);
+        this.bindClassMethods(['mount', 'getProfileForPage', 'getCharactersForPage', 'getRaidsForPage'], this);
         this.dataStore = new DataStore();
+        this.header = new Header(this.dataStore);
         this.dataStore.addChangeListener(this.addProfileToPage);
-        // this.dataStore.addChangeListener(this.addCharactrersToPage);
+        // this.dataStore.addChangeListener(this.addCharactersToPage);
         // this.dataStore.addChangeListener(this.addRaidsToPage);
     }
 
@@ -29,7 +30,7 @@ class ViewProfile extends BindingClass {
     async getProfileForPage() {
         const urlParams = new URLSearchParams(window.location.search);
         const username = urlParams.get('username');
-        const profile = await this.getProfile(username);
+        const profile = await this.client.getProfile(username);
         this.dataStore.set('profile', profile);
         console.log('profile has been stored');
     }
@@ -118,12 +119,12 @@ class ViewProfile extends BindingClass {
     // }
 
     addProfileToPage() {
-        const profile = this.data.get('profile');
+        const profile = this.dataStore.get('profile');
         if (profile == null) {
             return;
         }
         document.getElementById('viewProfileTable').innerHTML = this.createProfileTable(profile);
-        document.getElementById('saveProfile').addEventListener('click', this.updateProject);
+        // document.getElementById('saveProfile').addEventListener('click', this.updateProject);
     }
 }
 

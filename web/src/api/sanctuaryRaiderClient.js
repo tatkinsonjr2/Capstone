@@ -107,7 +107,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
 
     /**
      * Creates a profile.
-     * @param userName Unique identifier for a playlist
+     * @param username Unique identifier for a playlist
      * @param guild identifies guild entity
      * @param publicNote includes player notes
      * @param officerNote includes notes that only officers/admin can see
@@ -206,7 +206,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
         async getCharacter(characterName, errorCallback) {
             try {
                 const token = await this.getTokenOrThrow("Must be signed in to view this profile.");
-                const response = await this.axiosClient.get(`/characters/${characterName}`, {
+                const response = await this.axiosClient.get(`characters/${characterName}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -257,7 +257,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
     async updateProfile(username, guild, publicNote, officerNote, errorCallback) {
         try {
             const token = await this.getTokenOrThrow("Only authenticated users can update a profile.");
-            const response = await this.axiosClient.put(`/profiles/{username}`, {
+            const response = await this.axiosClient.put(`/profiles/${username}`, {
                 username: username,
                 guild: guild,
                 publicNote: publicNote,
@@ -281,7 +281,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
         async updateRaid(raidName, date, publicNote, officerNote, status, instanceName, attendees, errorCallback) {
             try {
                 const token = await this.getTokenOrThrow("Only authenticated users can update a raid.");
-                const response = await this.axiosClient.put(`/raids/{raidName}`, {
+                const response = await this.axiosClient.put(`/raids/${raidName}`, {
                     raidName: raidName,
                     date: date,
                     publicNote: publicNote,
@@ -301,18 +301,18 @@ export default class SanctuaryRaiderClient extends BindingClass {
             }
         }
 
-        async getAllCharactersByUsername(username){
+        async getAllCharactersByUsername(username, errorCallback){
             try {
-                const response = await this.axiosClient.get(`profiles/${username}/characters`);
+                const response = await this.axiosClient.get(`/profiles/${username}/characters`);
                 return response.data.characters;
             } catch (error) {
                 this.handleError(error, errorCallback)
             }
         }
 
-        async getAllRaidsByCharacterName(characterName){
+        async getAllRaidsByCharacterName(characterName, errorCallback){
             try{
-                const response = await this.axiosClient.get(`characters/${characterName}/raids`);
+                const response = await this.axiosClient.get(`/characters/${characterName}/raids`);
                 return response.data.raids;
             } catch (error){
                 this.handleError(error, errorCallback)
