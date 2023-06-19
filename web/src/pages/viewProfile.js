@@ -7,11 +7,11 @@ import * as url from "url";
 class ViewProfile extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'getProfileForPage', 'getCharactersForPage', 'getRaidsForPage', 'createProfileTable', 'createCharactersTable', 'createRaidsTable', 'addProfileToPage', 'addCharactersToPage', 'addRaidsToPage'], this)
+        this.bindClassMethods(['mount', 'getProfileForPage', 'getCharactersForPage', 'getRaidsForPage', 'createProfileTable', 'createCharactersTable', 'createRaidsTable', 'addProfileToPage', 'addCharactersToPage', 'addRaidsToPage'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.addProfileToPage);
-        this.dataStore.addChangeListener(this.addCharactrersToPage);
-        this.dataStore.addChangeListener(this.addRaidsToPage);
+        // this.dataStore.addChangeListener(this.addCharactrersToPage);
+        // this.dataStore.addChangeListener(this.addRaidsToPage);
     }
 
     async updateProfile(event){
@@ -29,7 +29,7 @@ class ViewProfile extends BindingClass {
     async getProfileForPage() {
         const urlParams = new URLSearchParams(window.location.search);
         const username = urlParams.get('username');
-        const profile = await this.getProfileForPage(username);
+        const profile = await this.getProfile(username);
         this.dataStore.set('profile', profile);
         console.log('profile has been stored');
     }
