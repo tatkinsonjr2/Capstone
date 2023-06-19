@@ -1,0 +1,61 @@
+@startuml
+
+class LambdaActivityRunner
+class CreateCharacterLambda
+class AuthenticatedLambdaRequest
+class LambdaResponse
+
+class CreateCharacterActivity {
+  - characterDao: CharacterDao
+  + CreateCharacterActivity(characterDao: CharacterDao)
+  + handleRequest(createCharacterRequest: CreateCharacterRequest): CreateCharacterResult
+}
+
+class CreateCharacterResult {
+  - character: CharacterModel
+  + CreateCharacterResult(character: CharacterModel)
+  + getCharacter(): CharacterModel
+}
+
+class CreateCharacterRequest {
+  - username: String
+  - characterName: String
+  - characterClass: String
+  - spec: String
+  - role: String
+  - race: String
+  - publicNote: String
+  - officerNote: String
+  - professionOne: String
+  - professionTwo: String
+  - alternateCharacter: Boolean
+  - wishList: Set<String>
+  + CreateCharacterRequest(username: String, characterName: String, characterClass: String, spec: String, role: String, race: String, publicNote: String, officerNote: String, professionOne: String, professionTwo: String, alternateCharacter: Boolean, wishList: Set<String>)
+  + getUsername(): String
+  + getCharacterName(): String
+  + getCharacterClass(): String
+  + getSpec(): String
+  + getRole(): String
+  + getRace(): String
+  + getPublicNote(): String
+  + getOfficerNote(): String
+  + getProfessionOne(): String
+  + getProfessionTwo(): String
+  + getAlternateCharacter(): Boolean
+  + getWishList(): Set<String>
+}
+
+interface RequestHandler
+
+LambdaActivityRunner --|> RequestHandler
+CreateCharacterLambda --|> LambdaActivityRunner
+CreateCharacterLambda --> AuthenticatedLambdaRequest
+CreateCharacterLambda --> LambdaResponse
+
+CreateCharacterLambda ..> CreateCharacterRequest
+CreateCharacterActivity --|> RequestHandler
+CreateCharacterActivity ..> CreateCharacterResult
+CreateCharacterActivity ..> CharacterDao
+CreateCharacterResult ..> CharacterModel
+
+@enduml
