@@ -1,6 +1,5 @@
 package sanctuaryraider.activity.results;
 
-import sanctuaryraider.dynamodb.models.Profile;
 import sanctuaryraider.models.ProfileModel;
 
 public class UpdateProfileResult {
@@ -10,7 +9,7 @@ public class UpdateProfileResult {
         this.profile = profile;
     }
 
-    public ProfileModel getProject(){
+    public ProfileModel getProfile(){
         return profile;
     }
 
