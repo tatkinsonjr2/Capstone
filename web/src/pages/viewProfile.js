@@ -53,7 +53,7 @@ class ViewProfile extends BindingClass {
     mount() {
         this.client = new SanctuaryRaiderClient();
         this.getRaidsForPage();
-        this.getCharactersForPage();
+        this.getProfileForPage();
         this.getCharactersForPage();
     }
 
@@ -100,22 +100,22 @@ class ViewProfile extends BindingClass {
 </form>`;
         return html;
     }
+    //
 
-    createCharacterTable(characters) {
-        let html = `
-        <form>
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Username</th>
-                    <th scope="col">Guild</th>
-                    <th scope="col">Public Note</th>
-                    <th scope="col">Officer Note</th>
-                 </tr>
-                </thead>
-        `
-    }
-
+    // createCharacterTable(characters) {
+    //     let html = `
+    //     <form>
+    //         <table class="table">
+    //             <thead class="thead-dark">
+    //             <tr>
+    //                 <th scope="col">Username</th>
+    //                 <th scope="col">Guild</th>
+    //                 <th scope="col">Public Note</th>
+    //                 <th scope="col">Officer Note</th>
+    //              </tr>
+    //             </thead>
+    //     `
+    // }
 
     addProfileToPage() {
         const profile = this.data.get('profile');
