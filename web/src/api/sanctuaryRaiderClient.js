@@ -19,7 +19,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
         const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'createProfile', 'createRaid', 'createCharacter', 'getProfile', 'getRaid', 'getCharacter', 'getAllCharactersByUsername', 'updateCharacter', 'updateProfile', 'updateRaid', 'getAllRaidsByCharacterName'];
         this.bindClassMethods(methodsToBind, this);
 
-        this.authenticator = new Authenticator();;
+        this.authenticator = new Authenticator();
         this.props = props;
 
         axios.defaults.baseURL = process.env.API_BASE_URL;
@@ -78,7 +78,7 @@ export default class SanctuaryRaiderClient extends BindingClass {
      * @param errorCallback (Optional) A function to execute if the call fails.
      * @returns The character's metadata.
      */
-    async createCharacter(userName, characterName, characterClass, spec, race, role, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, wishList) {
+    async createCharacter(username, characterName, characterClass, spec, race, role, publicNote, officerNote, professionOne, professionTwo, alternateCharacter, wishList) {
         try {
             const token = await this.getTokenOrThrow("Must be signed in to create a character.")
             const response = await this.axiosClient.post(`characters`, {

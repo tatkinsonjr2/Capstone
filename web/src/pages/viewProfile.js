@@ -55,8 +55,11 @@ class ViewProfile extends BindingClass {
     async mount() {
         this.client = new SanctuaryRaiderClient();
         await this.getProfileForPage();
+        await this.getCharactersForPage();
+        await this.getRaidsForPage();
         console.log('this is', this.dataStore.get('profile'));
         await this.createProfileTable(this.dataStore.get('profile'));
+        await this.createCharactersTable(this.dataStore.get('characters'))
         // this.getRaidsForPage();
         // this.getCharactersForPage();
     }
@@ -69,6 +72,10 @@ class ViewProfile extends BindingClass {
         console.log("html error");
     }
 
+    async createCharactersTable() {
+        const username = document.getElementById("profile-username");
+        const characters = await this.getCharactersForPage()
+    }
 }
 const main = async() => {
     const viewProfile = new ViewProfile();

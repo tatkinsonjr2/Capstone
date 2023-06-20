@@ -28,6 +28,7 @@ module.exports = {
     searchPlaylists: path.resolve(__dirname, 'src', 'pages', 'searchPlaylists.js'),
     createProfile: path.resolve(__dirname, 'src', 'pages','createProfile.js'),
     viewProfile: path.resolve(__dirname, 'src', 'pages','viewProfile.js'),
+    createCharacter: path.resolve(__dirname, 'src', 'pages','createCharacter.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build', 'assets'),
