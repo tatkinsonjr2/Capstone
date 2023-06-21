@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="assets/editCharacter.js"></script>
+    <script src="https://kit.fontawesome.com/625df497b1.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+<div class="row">
+    <div class="col-lg-2 d-lg-block d-none m-0 p-0">
+        <div id="left-banner" class="poster-sticky"></div>
+
+    </div>
+    <div class="col-12 col-xl-8 col-lg-10 offset-lg-0">
+        <div class="row mb-3">
+            <div class="col-12 pt-2 bg-lightest rounded">
+                <ul class="list-unstyled">
+                    <li>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+            <span class="font-weight-bold h1" data-original-title="" title="">
+                Edit <a href="" class="text-death-knight" data-original-title="" title="">Deadcateddad</a>
+            </span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <span class="fas fa-fw fa-bow-arrow text-dps" data-original-title="" title=""></span>
+                                Death Knight
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <form id="editForm" class="form-horizontal" role="form" method="POST" action="https://thatsmybis.com/12015/sanctuary/c/update">
+            <input type="hidden" name="_token" value="dNk83Zd80zKg3AhaLUBOsLmERPYp6F945An0HILH">
+
+            <input hidden="" name="id" value="426851">
+            <input hidden="" name="create_more" value="0">
+
+            <div class="row">
+                <div class="col-12 pt-2 pb-1 mb-4 bg-light rounded">
+                    <div class="row mb-4">
+                        <div class="col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="name" class="font-weight-bold">
+                                    <span class="text-muted fas fa-fw fa-user" data-original-title="" title=""></span>
+                                    Character Name
+                                </label>
+                                <input name="name" class="js-name form-control dark" maxlength="40" type="text" placeholder="eg. Radu" value="Deadcateddad">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="member_id" class="font-weight-normal">
+                                    <span class="text-muted fas fa-fw fa-user" data-original-title="" title=""></span>
+                                    Guild Member
+                                </label>
+                                <div class="form-group">
+                                    <div class="dropdown bootstrap-select form-control dark">
+                                        <select name="member_id" class="form-control dark selectpicker" data-live-search="true">
+                                    </select>
+                                        <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light" data-toggle="dropdown" role="combobox" aria-owns="bs-select-1" aria-haspopup="listbox" aria-expanded="false" title="tatk2">
+                                            <div class="filter-option"><div class="filter-option-inner">
+                                                <div class="filter-option-inner-inner">tatk2</div>
+                                            </div>
+                                            </div>
+                                        </button>
+                                        <div class="dropdown-menu ">
+                                        <div class="bs-searchbox">
+                                            <input type="search" class="form-control" autocomplete="off" role="combobox" aria-label="Search" aria-controls="bs-select-1" aria-autocomplete="list">
+                                        </div>
+                                        <div class="inner show" role="listbox" id="bs-select-1" tabindex="-1">
+                                            <ul class="dropdown-menu inner show" role="presentation"></ul>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="class" class="font-weight-bold">
+                                    <span class="text-muted fas fa-fw fa-swords" data-original-title="" title=""></span>
+                                    Class
+                                </label>
+                                <div class="form-group">
+                                    <select name="class" class="js-class form-control dark" data-index="1">
+                                        <option value="">
+                                            —
+                                        </option>
+
+                                        <option value="Death Knight" class="text-death-knight-important font-weight-medium" selected="">
+                                            Death Knight
+                                        </option>
+                                        <option value="Druid" class="text-druid-important font-weight-medium">
+                                            Druid
+                                        </option>
+                                        <option value="Hunter" class="text-hunter-important font-weight-medium">
+                                            Hunter
+                                        </option>
+                                        <option value="Mage" class="text-mage-important font-weight-medium">
+                                            Mage
+                                        </option>
+                                        <option value="Paladin" class="text-paladin-important font-weight-medium">
+                                            Paladin
+                                        </option>
+                                        <option value="Priest" class="text-priest-important font-weight-medium">
+                                            Priest
+                                        </option>
+                                        <option value="Rogue" class="text-rogue-important font-weight-medium">
+                                            Rogue
+                                        </option>
+                                        <option value="Shaman" class="text-shaman-important font-weight-medium">
+                                            Shaman
+                                        </option>
+                                        <option value="Warlock" class="text-warlock-important font-weight-medium">
+                                            Warlock
+                                        </option>
+                                        <option value="Warrior" class="text-warrior-important font-weight-medium">
+                                            Warrior
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="archetype" class="font-weight-bold">
+                                    Role
+                                </label>
+                                <div class="form-group">
+                                    <select name="archetype" class="js-archetype form-control dark" data-index="1">
+                                        <option value="" selected="">
+                                            —
+                                        </option>
+                                        <option value="DPS" class="text-dps-important font-weight-medium" selected="">
+                                            DPS
+                                        </option>
+                                        <option value="Heal" class="text-heal-important font-weight-medium">
+                                            Healer
+                                        </option>
+                                        <option value="Tank" class="text-tank-important font-weight-medium">
+                                            Tank
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="spec" class="font-weight-bold">
+                                    <span class="text-muted fas fa-fw fa-hat-wizard" data-original-title="" title=""></span>
+                                    Spec
+                                </label>
+                                <div class="form-group">
+                                    <select name="spec" class="js-spec form-control dark" data-index="1">
+                                        <option value="" selected="">
+                                            —
+                                        </option>
+                                        <option value="Blood" data-class="Death Knight" data-archetype="DPS" data-icon="spec_blood.jpg">
+                                            Blood
+                                        </option>
+                                        <option value="Frost (DK)" data-class="Death Knight" data-archetype="DPS" data-icon="spec_frost_dk.jpg">
+                                            Frost
+                                        </option>
+                                        <option value="Unholy" data-class="Death Knight" data-archetype="DPS" data-icon="spec_unholy.jpg">
+                                            Unholy
+                                        </option>
+                                        <option value="Balance" data-class="Druid" data-archetype="DPS" data-icon="spec_balance.jpg" disabled="" style="display: none;">
+                                            Balance
+                                        </option>
+                                        <option value="Feral" data-class="Druid" data-archetype="DPS" data-icon="spec_feral.jpg" disabled="" style="display: none;">
+                                            Feral
+                                        </option>
+                                        <option value="Resto (Druid)" data-class="Druid" data-archetype="Heal" data-icon="spec_restoration_druid.jpg" disabled="" style="display: none;">
+                                            Restoration
+                                        </option>
+                                        <option value="Beast" data-class="Hunter" data-archetype="DPS" data-icon="spec_beast.jpg" disabled="" style="display: none;">
+                                            Beast
+                                        </option>
+                                        <option value="Marksman" data-class="Hunter" data-archetype="DPS" data-icon="spec_marksmanship.jpg" disabled="" style="display: none;">
+                                            Marksmanship
+                                        </option>
+                                        <option value="Survival" data-class="Hunter" data-archetype="DPS" data-icon="spec_survival.jpg" disabled="" style="display: none;">
+                                            Survival
+                                        </option>
+                                        <option value="Arcane" data-class="Mage" data-archetype="DPS" data-icon="spec_arcane.jpg" disabled="" style="display: none;">
+                                            Arcane
+                                        </option>
+                                        <option value="Fire" data-class="Mage" data-archetype="DPS" data-icon="spec_fire.jpg" disabled="" style="display: none;">
+                                            Fire
+                                        </option>
+                                        <option value="Frost" data-class="Mage" data-archetype="DPS" data-icon="spec_frost_mage.jpg" disabled="" style="display: none;">
+                                            Frost
+                                        </option>
+                                        <option value="Retribution" data-class="Paladin" data-archetype="DPS" data-icon="spec_retribution.jpg" disabled="" style="display: none;">
+                                            Retribution
+                                        </option>
+                                        <option value="Holy (Pally)" data-class="Paladin" data-archetype="Heal" data-icon="spec_holy.jpg" disabled="" style="display: none;">
+                                            Holy
+                                        </option>
+                                        <option value="Prot (Pally)" data-class="Paladin" data-archetype="Tank" data-icon="spec_protection_paladin.jpg" disabled="" style="display: none;">
+                                            Protection
+                                        </option>
+                                        <option value="Discipline" data-class="Priest" data-archetype="Heal" data-icon="spec_discipline.jpg" disabled="" style="display: none;">
+                                            Discipline
+                                        </option>
+                                        <option value="Holy (Priest)" data-class="Priest" data-archetype="Heal" data-icon="spec_holyjpgg" disabled="" style="display: none;">
+                                            Holy
+                                        </option>
+                                        <option value="Shadow" data-class="Priest" data-archetype="DPS" data-icon="spec_shadow.jpg" disabled="" style="display: none;">
+                                            Shadow
+                                        </option>
+                                        <option value="Assassination" data-class="Rogue" data-archetype="DPS" data-icon="spec_assassination.jpg" disabled="" style="display: none;">
+                                            Assassination
+                                        </option>
+                                        <option value="Combat" data-class="Rogue" data-archetype="DPS" data-icon="spec_combat.jpg" disabled="" style="display: none;">
+                                            Combat
+                                        </option>
+                                        <option value="Subtlety" data-class="Rogue" data-archetype="DPS" data-icon="spec_subtlety.jpg" disabled="" style="display: none;">
+                                            Subtlety
+                                        </option>
+                                        <option value="Elemental" data-class="Shaman" data-archetype="DPS" data-icon="spec_elemental.jpg" disabled="" style="display: none;">
+                                            Elemental
+                                        </option>
+                                        <option value="Enhancement" data-class="Shaman" data-archetype="DPS" data-icon="spec_enhancement.jpg" disabled="" style="display: none;">
+                                            Enhancement
+                                        </option>
+                                        <option value="Resto (Shammy)" data-class="Shaman" data-archetype="Heal" data-icon="spec_restoration_shaman.jpg" disabled="" style="display: none;">
+                                            Restoration
+                                        </option>
+                                        <option value="Affliction" data-class="Warlock" data-archetype="DPS" data-icon="spec_affliction.jpg" disabled="" style="display: none;">
+                                            Affliction
+                                        </option>
+                                        <option value="Destruction" data-class="Warlock" data-archetype="DPS" data-icon="spec_destruction.jpg" disabled="" style="display: none;">
+                                            Destruction
+                                        </option>
+                                        <option value="Demonology" data-class="Warlock" data-archetype="DPS" data-icon="spec_demonology.jpg" disabled="" style="display: none;">
+                                            Demonology
+                                        </option>
+                                        <option value="Arms" data-class="Warrior" data-archetype="DPS" data-icon="spec_arms.jpg" disabled="" style="display: none;">
+                                            Arms
+                                        </option>
+                                        <option value="Fury" data-class="Warrior" data-archetype="DPS" data-icon="spec_fury.jpg" disabled="" style="display: none;">
+                                            Fury
+                                        </option>
+                                        <option value="Prot (War)" data-class="Warrior" data-archetype="Tank" data-icon="spec_protection_warrior.jpg" disabled="" style="display: none;">
+                                            Protection
+                                        </option>
+                                    </select>
+                                    <input class="selectInput" style="display:none;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-12">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="race" class="font-weight-normal">
+                                    Race
+                                </label>
+                                <div class="form-group">
+                                    <select name="race" class="form-control dark">
+                                        <option value="" selected="">
+                                            —
+                                        </option>
+
+                                        <option value="Blood Elf" class="text-horde-important font-weight-medium">
+                                            Blood Elf
+                                        </option>
+                                        <option value="Orc" class="text-horde-important font-weight-medium">
+                                            Orc
+                                        </option>
+                                        <option value="Tauren" class="text-horde-important font-weight-medium">
+                                            Tauren
+                                        </option>
+                                        <option value="Troll" class="text-horde-important font-weight-medium">
+                                            Troll
+                                        </option>
+                                        <option value="Undead" class="text-horde-important font-weight-medium">
+                                            Undead
+                                        </option>
+                                        <option value="Draenei" class="text-alliance-important font-weight-medium">
+                                            Draenei
+                                        </option>
+                                        <option value="Dwarf" class="text-alliance-important font-weight-medium">
+                                            Dwarf
+                                        </option>
+                                        <option value="Gnome" class="text-alliance-important font-weight-medium">
+                                            Gnome
+                                        </option>
+                                        <option value="Human" class="text-alliance-important font-weight-medium">
+                                            Human
+                                        </option>
+                                        <option value="Night Elf" class="text-alliance-important font-weight-medium">
+                                            Night Elf
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-6">
+                            <div class="form-group">
+                                <label for="level" class="text-muted font-weight-normal">
+                                    Level
+                                </label>
+                                <input name="level" type="number" min="1" max="80" class="form-control dark" placeholder="0" value="80">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4 pb-1 pt-2 bg-light rounded">
+            <div class="row mb-4 pb-1 pt-2 bg-light rounded">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="class" class="font-weight-bold">
+                                    <span class="text-muted fas fa-fw fa-flower-daffodil" data-original-title="" title=""></span>
+                                    Profession 1
+                                </label>
+                                <div class="form-group">
+                                    <select name="profession_1" class="form-control dark">
+                                        <option value="" selected="">
+                                            —
+                                        </option>
+
+                                        <option value="Alchemy">
+                                            Alchemy
+                                        </option>
+                                        <option value="Blacksmithing">
+                                            Blacksmithing
+                                        </option>
+                                        <option value="Enchanting">
+                                            Enchanting
+                                        </option>
+                                        <option value="Engineering">
+                                            Engineering
+                                        </option>
+                                        <option value="Herbalism">
+                                            Herbalism
+                                        </option>
+                                        <option value="Inscription">
+                                            Inscription
+                                        </option>
+                                        <option value="Jewelcrafting">
+                                            Jewelcrafting
+                                        </option>
+                                        <option value="Leatherworking">
+                                            Leatherworking
+                                        </option>
+                                        <option value="Mining">
+                                            Mining
+                                        </option>
+                                        <option value="Skinning">
+                                            Skinning
+                                        </option>
+                                        <option value="Tailoring">
+                                            Tailoring
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="class" class="font-weight-bold">
+                                    Profession 2
+                                </label>
+                                <div class="form-group">
+                                    <select name="profession_2" class="form-control dark">
+                                        <option value="" selected="">
+                                            —
+                                        </option>
+
+                                        <option value="Alchemy">
+                                            Alchemy
+                                        </option>
+                                        <option value="Blacksmithing">
+                                            Blacksmithing
+                                        </option>
+                                        <option value="Enchanting">
+                                            Enchanting
+                                        </option>
+                                        <option value="Engineering">
+                                            Engineering
+                                        </option>
+                                        <option value="Herbalism">
+                                            Herbalism
+                                        </option>
+                                        <option value="Inscription">
+                                            Inscription
+                                        </option>
+                                        <option value="Jewelcrafting">
+                                            Jewelcrafting
+                                        </option>
+                                        <option value="Leatherworking">
+                                            Leatherworking
+                                        </option>
+                                        <option value="Mining">
+                                            Mining
+                                        </option>
+                                        <option value="Skinning">
+                                            Skinning
+                                        </option>
+                                        <option value="Tailoring">
+                                            Tailoring
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row mb-4 pb-1 pt-2 bg-light rounded">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="public_note" class="font-weight-bold">
+                            <span class="text-muted fas fa-fw fa-comment-alt-lines" data-original-title="" title=""></span>
+                            Public Note
+                            <small class="text-muted">
+                                anyone in the guild can see this
+                            </small>
+                        </label>
+                        <textarea maxlength="140" data-max-length="140" name="public_note" rows="1" placeholder="anyone in the guild can see this" class="form-control dark"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                    <div class="form-group">
+                        <label for="officer_note" class="font-weight-bold">
+                            <span class="text-muted fas fa-fw fa-shield" data-original-title="" title=""></span>
+                            Officer Note
+                            <small class="text-muted">
+                                only officers can see this
+                            </small>
+                        </label>
+                        <textarea maxlength="140" data-max-length="140" name="officer_note" rows="1" placeholder="only officers can see this" class="form-control dark"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4 pt-2 pb-1 bg-light rounded">
+                <div class="col-6">
+                    <div class="form-group mb-0">
+                        <div class="checkbox" style="margin-top:6px;">
+                            <label>
+                                <input type="checkbox" name="is_alt" value="1" class="">
+                                Alt Character <small class="text-muted">
+                            </small>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-success"><span class="fas fa-fw fa-save" data-original-title="" title=""></span> Save</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-xl-2 d-lg-block d-none m-0 p-0">
+        <div id="right-banner" class="poster-sticky"></div>
+    </div>
+</div>
+
+
+</body>

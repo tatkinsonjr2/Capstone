@@ -55,6 +55,7 @@ class ViewProfile extends BindingClass {
     async mount() {
         this.client = new SanctuaryRaiderClient();
         this.dataStore.addChangeListener(this.addCharactersToPage);
+        this.dataStore.addChangeListener(this.addRaidsToPage);
         await this.getProfileForPage();
         await this.getCharactersForPage();
         await this.getRaidsForPage();
@@ -84,11 +85,44 @@ class ViewProfile extends BindingClass {
         const ul = document.getElementById('characterList');
         let characterHtml = "";
         characters.forEach(c => {
-            characterHtml += `<li>${c.characterName}</li>`;
+            characterHtml += `                        <li>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle mt-3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-original-title="" title="">
+                            <span class="font-weight-bold h2" data-original-title="" title="">
+                    <span class="" data-original-title="" id="current-character" title="">${c.characterName}</span>
+                </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <ul class="list-unstyled" style="list-style-type: none;">
+                                <li class="list-inline-item list-unstyled mb-1 mt-1">
+                                    <span class="" data-original-title="" title="">${c.characterClass}</span>
+                                </li>
+                            </ul>
+                        </li>`;
         });
         ul.innerHTML = characterHtml;
     }
 
+    addRaidsToPage(){
+        const raids = document.dataStore.get('raids');
+        if(!raids){
+            return;
+        }
+        console.log(raids);
+        const ul = document.getElementById('raidList');
+        let raidsHtml = "";
+        raids.forEach(r => {
+            raidsHtml += `<li class="list-inline-item mr-0">  
+                             <span class="font-weight-bold" data-original-title="" title="">${r.raidName}
+                        </span>
+                                            </li>
+                                            <li class="list-inline-item mr-0">
+                                            </li>`;
+        });
+        ul.innerHTML = raidsHtml;
+    }
     async createCharactersTable() {
         const username = document.getElementById("profile-username");
         const characters = await this.getCharactersForPage()
