@@ -1,0 +1,27 @@
+@startuml
+
+title Create Character Sequence Diagram
+
+actor User
+participant "CreateCharacterLambda" as Lambda
+participant "CreateCharacterActivity" as Activity
+database "CharacterDao" as Dao
+
+User -> Lambda: AuthenticatedLambdaRequest<CreateCharacterRequest>
+activate Lambda
+
+Lambda -> Activity: CreateCharacterRequest
+activate Activity
+
+Activity -> Dao: saveCharacter(character)
+activate Dao
+Dao --> Activity: Character saved
+
+Activity -> Activity: Convert character to CharacterModel
+activate Activity
+Activity --> Lambda: CreateCharacterResult
+
+Lambda --> User: LambdaResponse
+deactivate Lambda
+
+@enduml

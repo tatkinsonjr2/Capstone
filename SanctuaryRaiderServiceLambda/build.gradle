@@ -24,7 +24,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.8'
 
     implementation 'com.fasterxml.jackson.core:jackson-core:2.11.4'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.4'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.7.1'
+
 
     implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
     implementation 'com.amazonaws:aws-lambda-java-events:3.11.0'
@@ -79,7 +80,7 @@ checkstyle {
 
     def checkstyleDir = configFile.toPath().parent
     def suppressionFile = new File("$checkstyleDir/unit3/suppressions.xml")
-    configProperties.put('checkstyle.suppression.filter', suppressionFile) // This property is refereced in `checkstyle.xml`
+    configProperties.put('checkstyle.suppression.filter', suppressionFile) // This property is referenced in `checkstyle.xml`
 
     sourceSets = [sourceSets.main]
 }

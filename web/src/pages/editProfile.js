@@ -3,7 +3,7 @@ import Header from '../components/header';
 import BindingClass from '../util/bindingClass';
 import DataStore from "../util/DataStore";
 
-class CreateProfile extends BindingClass{
+class CreateCharacter extends BindingClass{
     constructor() {
         super();
         this.bindClassMethods(['mount', 'submit', 'redirectToViewProfile'], this);
@@ -26,27 +26,25 @@ class CreateProfile extends BindingClass{
     async submit(evt){
         evt.preventDefault();
 
-        const errorMessageDisplay = document.getElementById('error-message');
-        errorMessageDisplay.innerText = ``;
-        errorMessageDisplay.classList.add('hidden');
-
         const createButton = document.getElementById('create');
         const origButtonText = createButton.innerText;
         createButton.innerText = "Loading...";
 
         const username = document.getElementById('username').value;
         const guild = document.getElementById('guild').value;
-        const publicNote = document.getElementById('public-note').value;
-        const officerNote = document.getElementById('officer-note').value;
+        const publicNote = document.getElementById('publicNote').value;
+        const officerNote = document.getElementById('officerNote').value;
 
-        const profile = await this.client.createProfile(username, guild, publicNote, officerNote, (error) => {
+
+        const profile = await this.client.updateProfile(username, guild, publicNote, officerNote, (error) => {
             createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
+
         this.dataStore.set('profile', profile);
         console.log("complete");
-        alert('Profile has been saved successfully')
+        alert('character has been saved successfully')
     }
 
     /**
@@ -55,6 +53,7 @@ class CreateProfile extends BindingClass{
 
     redirectToViewProfile(){
         const profile = this.dataStore.get('profile');
+        console.log("profile", profile);
         if (profile != null){
             window.location.href = `/viewProfile.html?username=${profile.username}`;
         }
@@ -65,8 +64,8 @@ class CreateProfile extends BindingClass{
  * Main method to run when the page contents have loaded
  */
 const main = async() => {
-    const createProfile = new CreateProfile();
-    createProfile.mount();
+    const createCharacter = new CreateCharacter();
+    createCharacter.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);

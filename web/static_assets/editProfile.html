@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="assets/editProfile.js"></script>
+
+    <script src="https://kit.fontawesome.com/625df497b1.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<div class="row">
+    <div class="col-lg-2 d-lg-block d-none m-0 p-0">
+        <div id="left-banner" class="poster-sticky"></div>
+
+    </div>
+    <div class="col-12 col-xl-8 col-lg-10 offset-lg-0">
+        <div class="row mb-4">
+            <div class="col-12 pt-2 bg-lightest rounded">
+                <ul class="list-unstyled">
+                    <li>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h1 class="mb-0 font-weight-bold">
+                                    Edit Profile <a href="editProfile.html" class="text-white" data-original-title="" title="">tatk</a>
+                                </h1>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <form id="editForm" class="form-horizontal" role="form">
+            <input type="hidden" name="_token" value="UZBRWBVOMorx2CkDzaO88QRiZ7s5lV8L4iHuDJ0R">
+
+            <input hidden="" name="id" value="259944">
+
+            <div class="row mb-3 pb-1 pt-2 bg-light rounded">
+                <div class="col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="username" class="font-weight-bold">
+                            <span class="text-muted fas fa-fw fa-user" data-original-title="" title=""></span>
+                            Username
+                        </label>
+                        <input name="username" maxlength="40" type="text" class="form-control dark" placeholder="eg. Gurgthock" id="username">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3 pb-1 pt-2 bg-light rounded">
+                <div class="col-12 mb-4">
+                    <div class="form-group">
+                        <label for="publicNote" class="font-weight-bold">
+                            <span class="text-muted fas fa-fw fa-comment-alt-lines" data-original-title="" title=""></span>
+                            Public Note
+                            <small class="text-muted">
+                                anyone in the guild can see this
+                            </small>
+                        </label>
+                        <textarea maxlength="140" data-max-length="140" name="public_note" rows="2" placeholder="anyone in the guild can see this" class="form-control dark" id="publicNote"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <div class="form-group">
+                        <label for="guild" class="font-weight-bold">
+                            <span class="text-muted fas fa-fw fa-comment-alt-lines" data-original-title="" title=""></span>
+                            Guild
+                        </label>
+                        <textarea maxlength="140" data-max-length="140" name="public_note" rows="2" placeholder="anyone in the guild can see this" class="form-control dark" id="guild"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <div class="form-group">
+                        <label for="officerNote" class="font-weight-bold">
+                            <span class="text-muted fas fa-fw fa-shield" data-original-title="" title=""></span>
+                            Officer Note
+                            <small class="text-muted">
+                                only officers can see this
+                            </small>
+                        </label>
+                        <textarea maxlength="140" data-max-length="140" name="officer_note" rows="2" placeholder="only officers can see this" class="form-control dark" id="officerNote">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3 pt-2 pb-1 bg-light rounded">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" id="create">
+                    <span class="fas fa-fw fa-save" data-original-title="" title=""></span>Save</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-xl-2 d-lg-block d-none m-0 p-0">
+        <div id="right-banner" class="poster-sticky"></div>
+    </div>
+</div>
