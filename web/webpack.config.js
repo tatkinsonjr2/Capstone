@@ -28,6 +28,7 @@ module.exports = {
     viewProfile: path.resolve(__dirname, 'src', 'pages','viewProfile.js'),
     createCharacter: path.resolve(__dirname, 'src', 'pages','createCharacter.js'),
     editProfile: path.resolve(__dirname, 'src', 'pages', 'editProfile.js'),
+    createRaid: path.resolve(__dirname, 'src', 'pages', 'createRaid.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build', 'assets'),
