@@ -49,14 +49,23 @@
                         <div class="row">
                             <div class="col-lg-6 col-12 ">
                                 <div class="form-group">
-                                    <label for="name" class="font-weight-bold">
+                                    <label for="raid-name" class="font-weight-bold">
                                         <span class="text-dk fas fa-fw fa-helmet-battle" data-original-title="" title=""></span>
                                         Raid Name
                                     </label>
-                                    <input name="name" required="" autocomplete="off" maxlength="75" type="text" class="form-control dark" placeholder="eg. MC Binding Run 42" value="">
+                                    <input name="name" required="" autocomplete="off" maxlength="75" type="text" class="form-control dark" placeholder="eg. MC Binding Run 42" id="raid-name">
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-lg-6 col-12 ">
+                                    <div class="form-group">
+                                        <label for="username" class="font-weight-bold">
+                                            <span class="text-dk fas fa-fw fa-helmet-battle" data-original-title="" title=""></span>
+                                            Username
+                                        </label>
+                                        <input id="username" required="" autocomplete="off" maxlength="75" type="text" class="form-control dark" placeholder="Please enter your profile username" id="username">
+                                    </div>
+                                </div>
                             <div class="col-12 ">
                                 <div class="form-group mt-2">
                                 </div>
@@ -67,23 +76,23 @@
                         <div class="row">
                             <div class="col-lg-6 col-12 ">
                                 <div class="form-group">
-                                    <label for="public_note" class="font-weight-bold">
+                                    <label for="public-note" class="font-weight-bold">
                                         <span class="text-muted fas fa-fw fa-comment-alt-lines" data-original-title="" title=""></span>
                                         Public Note
                                         <small class="text-muted">anyone in the guild can see this</small>
                                     </label>
-                                    <textarea autocomplete="off" maxlength="250" data-max-length="250" name="public_note" rows="2" placeholder="anyone in the guild can see this" class="form-control dark"></textarea>
+                                    <textarea autocomplete="off" maxlength="250" data-max-length="250" id="public-note" rows="2" placeholder="anyone in the guild can see this" class="form-control dark"></textarea>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-12 ">
                                 <div class="form-group">
-                                    <label for="officer_note" class="font-weight-bold">
+                                    <label for="officer-note" class="font-weight-bold">
                                         <span class="text-muted fas fa-fw fa-shield" data-original-title="" title=""></span>
                                         Officer Note
                                         <small class="text-muted">only officers can see this</small>
                                     </label>
-                                    <textarea autocomplete="off" maxlength="250" data-max-length="250" name="officer_note" rows="2" placeholder="only officers can see this" class="form-control dark"></textarea>
+                                    <textarea autocomplete="off" maxlength="250" data-max-length="250" id="officer-note" rows="2" placeholder="only officers can see this" class="form-control dark"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -92,17 +101,19 @@
                             </div>
                         </div>
                     </div>
+                </form>
                 </div>
+
 
                 <div class="row mt-3 mb-3 pb-1 pt-2 bg-light rounded">
                     <div class="col-xl-4 col-sm-6 col-12 ">
-                        <label for="instance_id[0]" class="font-weight-bold">
+                        <label for="instance-name" class="font-weight-bold">
                             <span class="fas fa-fw fa-dungeon text-muted" data-original-title="" title=""></span>
                             Dungeon(s)
                             <span class="text-muted small" data-original-title="" title="">max 4</span>
                         </label>
                         <div class="form-group " style="">
-                            <select name="instance_id[]" class="js-show-next form-control dark" autocomplete="off">
+                            <select id="instance-name" class="js-show-next form-control dark" autocomplete="off">
                                 <option value="" selected="">
                                     —
                                 </option>
@@ -180,4 +191,11 @@
                                     Ruby Sanctum H25
                                 </option>
                             </select>
+                            <div class="form-group">
+                                <button class="btn btn-success mt-lg-4" id="create"><span class="fas fa-fw fa-save" data-original-title=""></span>Save</button>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -55,6 +55,7 @@ class ViewProfile extends BindingClass {
     async mount() {
         this.client = new SanctuaryRaiderClient();
         this.dataStore.addChangeListener(this.addCharactersToPage);
+        this.dataStore.addChangeListener(this.addRaidsToPage);
         await this.getProfileForPage();
         await this.getCharactersForPage();
         await this.getRaidsForPage();
@@ -104,6 +105,24 @@ class ViewProfile extends BindingClass {
         ul.innerHTML = characterHtml;
     }
 
+    addRaidsToPage(){
+        const raids = document.dataStore.get('raids');
+        if(!raids){
+            return;
+        }
+        console.log(raids);
+        const ul = document.getElementById('raidList');
+        let raidsHtml = "";
+        raids.forEach(r => {
+            raidsHtml += `<li class="list-inline-item mr-0">  
+                             <span class="font-weight-bold" data-original-title="" title="">${r.raidName}
+                        </span>
+                                            </li>
+                                            <li class="list-inline-item mr-0">
+                                            </li>`;
+        });
+        ul.innerHTML = raidsHtml;
+    }
     async createCharactersTable() {
         const username = document.getElementById("profile-username");
         const characters = await this.getCharactersForPage()

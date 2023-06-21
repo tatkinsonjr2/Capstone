@@ -34,6 +34,7 @@ class CreateRaid extends BindingClass{
         const publicNote = document.getElementById('public-note');
         const officerNote = document.getElementById('officer-note');
         const instanceName = document.getElementById('instanceName');
+        const username = document.getElementById('username');
 
 
         const raid = await this.client.createRaid(raidName,instanceName, publicNote, officerNote, (error) => {
@@ -41,6 +42,7 @@ class CreateRaid extends BindingClass{
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
+        this.dataStore.set('profile', username);
         this.dataStore.set('raid', raid);
         console.log("complete");
         alert('character has been saved successfully')
