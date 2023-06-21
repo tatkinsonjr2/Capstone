@@ -24,7 +24,7 @@ The "KEY" constants will be reused a few times below.
 /**
  * Logic needed for the landing page of the website.
  */
-class SearchPlaylists extends BindingClass {
+class SearchProfile extends BindingClass {
     constructor() {
         super();
 
@@ -133,8 +133,8 @@ class SearchPlaylists extends BindingClass {
  * Main method to run when the page contents have loaded.
  */
 const main = async () => {
-    const searchPlaylists = new SearchPlaylists();
-    searchPlaylists.mount();
+    const searchProfiles = new SearchProfile();
+    searchProfiles.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);

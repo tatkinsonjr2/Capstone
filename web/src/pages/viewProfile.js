@@ -7,11 +7,11 @@ import * as url from "url";
 class ViewProfile extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'getProfileForPage', 'getCharactersForPage', 'getRaidsForPage', 'createProfileTable'], this);
+        this.bindClassMethods(['mount', 'getProfileForPage', 'getCharactersForPage', 'getRaidsForPage', 'createProfileTable', 'addCharactersToPage'], this);
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
 
-        // this.dataStore.addChangeListener(this.addCharactersToPage);
+
         // this.dataStore.addChangeListener(this.addRaidsToPage);
     }
 
@@ -41,7 +41,7 @@ class ViewProfile extends BindingClass {
         const username = urlParams.get('username');
         const characters = await this.client.getAllCharactersByUsername(username);
         this.dataStore.set('characterList', characters);
-        console.log("characters are stored");
+        console.log("characters are stored", characters);
     }
 
     async getRaidsForPage() {
@@ -54,12 +54,14 @@ class ViewProfile extends BindingClass {
 
     async mount() {
         this.client = new SanctuaryRaiderClient();
+        this.dataStore.addChangeListener(this.addCharactersToPage);
         await this.getProfileForPage();
         await this.getCharactersForPage();
         await this.getRaidsForPage();
         console.log('this is', this.dataStore.get('profile'));
         await this.createProfileTable(this.dataStore.get('profile'));
-        await this.createCharactersTable(this.dataStore.get('characters'))
+        await this.createCharactersTable(this.dataStore.get('characters'));
+
         // this.getRaidsForPage();
         // this.getCharactersForPage();
     }
@@ -69,7 +71,22 @@ class ViewProfile extends BindingClass {
         profileName.innerText = profile.username;
         const guildName = document.getElementById("guild-name");
         guildName.innerText = profile.guild;
+        // const characterName = document.getElementById()
         console.log("html error");
+    }
+
+    addCharactersToPage(){
+        const characters = this.dataStore.get('characterList');
+        if(!characters){
+            return;
+        }
+        console.log("what we are looking for", characters);
+        const ul = document.getElementById('characterList');
+        let characterHtml = "";
+        characters.forEach(c => {
+            characterHtml += `<li>${c.characterName}</li>`;
+        });
+        ul.innerHTML = characterHtml;
     }
 
     async createCharactersTable() {

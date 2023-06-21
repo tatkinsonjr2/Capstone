@@ -26,10 +26,6 @@ class CreateCharacter extends BindingClass{
     async submit(evt){
         evt.preventDefault();
 
-        const errorMessageDisplay = document.getElementById('error-message');
-        errorMessageDisplay.innerText = ``;
-        errorMessageDisplay.classList.add('hidden');
-
         const createButton = document.getElementById('create');
         const origButtonText = createButton.innerText;
         createButton.innerText = "Loading...";
@@ -45,6 +41,7 @@ class CreateCharacter extends BindingClass{
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
+
         this.dataStore.set('profile', profile);
         console.log("complete");
         alert('character has been saved successfully')
@@ -56,6 +53,7 @@ class CreateCharacter extends BindingClass{
 
     redirectToViewProfile(){
         const profile = this.dataStore.get('profile');
+        console.log("profile", profile);
         if (profile != null){
             window.location.href = `/viewProfile.html?username=${profile.username}`;
         }

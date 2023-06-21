@@ -26,10 +26,6 @@ class CreateCharacter extends BindingClass{
     async submit(evt){
         evt.preventDefault();
 
-        const errorMessageDisplay = document.getElementById('error-message');
-        errorMessageDisplay.innerText = ``;
-        errorMessageDisplay.classList.add('hidden');
-
         const createButton = document.getElementById('create');
         const origButtonText = createButton.innerText;
         createButton.innerText = "Loading...";
@@ -42,15 +38,17 @@ class CreateCharacter extends BindingClass{
         const race = document.getElementById('race').value;
         const profession1 = document.getElementById('profession1').value;
         const profession2 = document.getElementById('profession2').value;
-        const publicNote = document.getElement('publicNote').value;
+        const publicNote = document.getElementById('publicNote').value;
         const officerNote=  document.getElementById('officerNote').value;
         //unsure of alternate character logic
+
 
         const character = await this.client.createCharacter(username, characterName, characterClass, role, spec, race, profession1, profession2, publicNote, officerNote, (error) => {
             createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
+        this.dataStore.set('profile', username);
         this.dataStore.set('character', character);
         console.log("complete");
         alert('character has been saved successfully')
@@ -63,7 +61,7 @@ class CreateCharacter extends BindingClass{
     redirectToViewProfile(){
         const profile = this.dataStore.get('profile');
         if (profile != null){
-            window.location.href = `/viewProfile.html?username=${profile.username}`;
+            window.location.href = `/viewProfile.html?username=${profile}`;
         }
     }
 }
