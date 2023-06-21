@@ -84,7 +84,22 @@ class ViewProfile extends BindingClass {
         const ul = document.getElementById('characterList');
         let characterHtml = "";
         characters.forEach(c => {
-            characterHtml += `<li>${c.characterName}</li>`;
+            characterHtml += `                        <li>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle mt-3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-original-title="" title="">
+                            <span class="font-weight-bold h2" data-original-title="" title="">
+                    <span class="" data-original-title="" id="current-character" title="">${c.characterName}</span>
+                </span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <ul class="list-unstyled" style="list-style-type: none;">
+                                <li class="list-inline-item list-unstyled mb-1 mt-1">
+                                    <span class="" data-original-title="" title="">${c.characterClass}</span>
+                                </li>
+                            </ul>
+                        </li>`;
         });
         ul.innerHTML = characterHtml;
     }
