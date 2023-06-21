@@ -106,7 +106,7 @@ class ViewProfile extends BindingClass {
     }
 
     addRaidsToPage(){
-        const raids = document.dataStore.get('raids');
+        const raids = this.dataStore.get('raids');
         if(!raids){
             return;
         }
