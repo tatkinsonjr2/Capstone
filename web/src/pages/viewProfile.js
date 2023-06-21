@@ -7,7 +7,8 @@ import * as url from "url";
 class ViewProfile extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'getProfileForPage', 'getCharactersForPage', 'getRaidsForPage', 'createProfileTable', 'addCharactersToPage'], this);
+        // 'getRaidsForPage' was removed
+        this.bindClassMethods(['mount', 'getProfileForPage', 'getCharactersForPage', 'createProfileTable', 'addCharactersToPage'], this);
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
 
@@ -44,21 +45,21 @@ class ViewProfile extends BindingClass {
         console.log("characters are stored", characters);
     }
 
-    async getRaidsForPage() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const characterName = urlParams.get('characterName');
-        const raids = await this.client.getAllRaidsByCharacterName(characterName);
-        this.dataStore.set('raids', raids);
-        console.log('raids are stored');
-    }
+    // async getRaidsForPage() {
+    //     const urlParams = new URLSearchParams(window.location.search);
+    //     const characterName = urlParams.get('characterName');
+    //     const raids = await this.client.getAllRaidsByCharacterName(characterName);
+    //     this.dataStore.set('raids', raids);
+    //     console.log('raids are stored', raids);
+    // }
 
     async mount() {
         this.client = new SanctuaryRaiderClient();
         this.dataStore.addChangeListener(this.addCharactersToPage);
-        this.dataStore.addChangeListener(this.addRaidsToPage);
+        // this.dataStore.addChangeListener(this.addRaidsToPage);
         await this.getProfileForPage();
         await this.getCharactersForPage();
-        await this.getRaidsForPage();
+        // await this.getRaidsForPage();
         console.log('this is', this.dataStore.get('profile'));
         await this.createProfileTable(this.dataStore.get('profile'));
         await this.createCharactersTable(this.dataStore.get('characters'));
@@ -104,25 +105,25 @@ class ViewProfile extends BindingClass {
         });
         ul.innerHTML = characterHtml;
     }
-
-    addRaidsToPage(){
-        const raids = this.dataStore.get('raids');
-        if(!raids){
-            return;
-        }
-        console.log(raids);
-        const ul = document.getElementById('raidList');
-        let raidsHtml = "";
-        raids.forEach(r => {
-            raidsHtml += `<li class="list-inline-item mr-0">  
-                             <span class="font-weight-bold" data-original-title="" title="">${r.raidName}
-                        </span>
-                                            </li>
-                                            <li class="list-inline-item mr-0">
-                                            </li>`;
-        });
-        ul.innerHTML = raidsHtml;
-    }
+    //
+    // addRaidsToPage(){
+    //     const raids = this.dataStore.get('raids');
+    //     if(!raids){
+    //         return;
+    //     }
+    //     console.log(raids);
+    //     const ul = document.getElementById('raidList');
+    //     let raidsHtml = "";
+    //     raids.forEach(r => {
+    //         raidsHtml += `<li class="list-inline-item mr-0">
+    //                          <span class="font-weight-bold" data-original-title="" title="">${r.raidName}
+    //                     </span>
+    //                                         </li>
+    //                                         <li class="list-inline-item mr-0">
+    //                                         </li>`;
+    //     });
+    //     ul.innerHTML = raidsHtml;
+    // }
     async createCharactersTable() {
         const username = document.getElementById("profile-username");
         const characters = await this.getCharactersForPage()
