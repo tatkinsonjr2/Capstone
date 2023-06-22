@@ -18,7 +18,11 @@ class CreateCharacter extends BindingClass{
     mount() {
         document.getElementById("create").addEventListener("click", this.submit);
         this.client = new SanctuaryRaiderClient();
+        const urlParams = new URLSearchParams(window.location.search);
+
     }
+
+
 
     /**
      * Method to run when the create profile submit button is pressed.

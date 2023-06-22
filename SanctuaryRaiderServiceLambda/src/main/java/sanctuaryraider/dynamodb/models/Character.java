@@ -4,9 +4,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import org.checkerframework.checker.units.qual.A;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -42,7 +40,7 @@ public class Character {
         this.characterName = characterName;
     }
 
-    @DynamoDBAttribute(attributeName = "class")
+    @DynamoDBAttribute(attributeName = "characterClass")
     public String getCharacterClass() {
         return characterClass;
     }
@@ -50,7 +48,7 @@ public class Character {
     public void setCharacterClass(String characterClass) {
         this.characterClass = characterClass;
     }
-    @DynamoDBAttribute(attributeName = "specialization")
+    @DynamoDBAttribute(attributeName = "spec")
     public String getSpec() {
         return spec;
     }

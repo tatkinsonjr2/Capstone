@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
@@ -26,7 +26,7 @@
                         <ul class="list-inline">
                             <li class="list-inline-item">
             <span class="font-weight-bold h1" data-original-title="" title="">
-                Edit <a href="" class="text-death-knight" data-original-title="" title="">Deadcateddad</a>
+                Edit Character <span class="text-death-knight" data-original-title="" title="" id="profile-characterName"></span>
             </span>
                             </li>
                         </ul>
@@ -34,8 +34,7 @@
                     <li>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <span class="fas fa-fw fa-bow-arrow text-dps" data-original-title="" title=""></span>
-                                Death Knight
+                                <span class="fas fa-fw fa-bow-arrow text-dps" data-original-title="" title="" id="characterClass"></span>
                             </li>
                         </ul>
                     </li>
@@ -45,7 +44,7 @@
             </div>
         </div>
 
-        <form id="editForm" class="form-horizontal" role="form" method="POST" action="https://thatsmybis.com/12015/sanctuary/c/update">
+        <form id="editForm" class="form-horizontal" role="form">
             <input type="hidden" name="_token" value="dNk83Zd80zKg3AhaLUBOsLmERPYp6F945An0HILH">
 
             <input hidden="" name="id" value="426851">
@@ -94,7 +93,7 @@
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="class" class="font-weight-bold">
-                                    <span class="text-muted fas fa-fw fa-swords" data-original-title="" title=""></span>
+                                    <span class="text-muted fas fa-fw fa-swords" data-original-title="" title=""><i class="bi bi-person-fill-gear"></i></span>
                                     Class
                                 </label>
                                 <div class="form-group">
@@ -425,7 +424,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -474,9 +472,11 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-success"><span class="fas fa-fw fa-save" data-original-title="" title=""></span> Save</button>
+                <button class="btn btn-success"><span class="fas fa-fw fa-save" data-original-title="" id="create"></span>Save</button>
+            </div>
             </div>
         </form>
+        </div>
     </div>
     <div class="col-xl-2 d-lg-block d-none m-0 p-0">
         <div id="right-banner" class="poster-sticky"></div>

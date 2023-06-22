@@ -116,6 +116,7 @@ In depth tutorial coming soon!
 - [ ] Blizzard API Integration.
 - [ ] Profile tether to Discord OAuth.
     - [ ] Discord Bot using JDA to import roles.
+- [ ] Edit Character Page redirect is failing
 
 See the [open issues](https://github.com/tatkinsonjr2/Capstone/issues) for a full list of proposed features (and known issues).
 

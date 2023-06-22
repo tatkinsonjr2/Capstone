@@ -43,7 +43,7 @@ class CreateCharacter extends BindingClass{
         //unsure of alternate character logic
 
 
-        const character = await this.client.createCharacter(username, characterName, characterClass, role, spec, race, profession1, profession2, publicNote, officerNote, (error) => {
+        const character = await this.client.createCharacter(username, characterName, characterClass, spec, role, race, publicNote, officerNote, profession1, profession2, (error) => {
             createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');

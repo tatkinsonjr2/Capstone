@@ -36,14 +36,13 @@ class EditCharacter extends BindingClass{
         const officerNote = document.getElementById('officerNote').value;
         const role = document.getElementById('role').value;
         const spec = document.getElementById('spec').value;
-        const profession1 = document.getElementById('profession1');
-        const profession2 = document.getElementById('profession2');
-        const race = document.getElementById('race');
-        const characterClass = document.getElementById('class');
+        const professionOne = document.getElementById('profession1').value;
+        const professionTwo = document.getElementById('profession2').value;
+        const race = document.getElementById('race').value;
+        const characterClass = document.getElementById('class').value;
 
 
-
-        const character = await this.client.updateCharacter(username, guild, publicNote, officerNote, role, spec, profession1, profession2, race, characterClass,(error) => {
+        const character = await this.client.updateCharacter(username, characterName, characterClass, spec, role, race, publicNote, officerNote, professionOne, professionTwo,(error) => {
             createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
@@ -59,10 +58,10 @@ class EditCharacter extends BindingClass{
      */
 
     redirectToViewProfile(){
-        const profile = this.dataStore.get('profile');
+        const profile = this.dataStore.get('profile')
         console.log("profile", profile);
         if (profile != null){
-            window.location.href = `/viewProfile.html?username=${profile.username}`;
+            window.location.href = `/viewProfile.html?username=${profile}`;
         }
     }
 }

@@ -88,10 +88,10 @@ class ViewProfile extends BindingClass {
         characters.forEach(c => {
             characterHtml += `                        <li>
                             <div class="dropdown">
-                                <a class="dropdown-toggle mt-3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-original-title="" title="">
+                                <a class="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-original-title="" title="">
                             <span class="font-weight-bold h2" data-original-title="" title="">
-                    <span class="" data-original-title="" id="current-character" title="">${c.characterName}</span>
-                </span>
+                            <a href="editCharacter.html?characterName=${c.characterName}&username=${c.username}" class="" data-original-title="" id="current-character" title="">${c.characterName}</a>
+                            </span>
                                 </a>
                             </div>
                         </li>

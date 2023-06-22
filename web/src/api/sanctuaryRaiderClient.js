@@ -203,14 +203,15 @@ export default class SanctuaryRaiderClient extends BindingClass {
          * @param characterName The unique name of the character.
          * @returns The requested character.
          */
-        async getCharacter(characterName, errorCallback) {
+        async getCharacter(username, characterName, errorCallback) {
             try {
                 const token = await this.getTokenOrThrow("Must be signed in to view this profile.");
-                const response = await this.axiosClient.get(`characters/${characterName}`, {
+                const response = await this.axiosClient.get(`/characters/${username}/${characterName}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 });
+                console.log(response.data.character);
                 return response.data.character;
             } catch (error) {
                 this.handleError(error, errorCallback)
