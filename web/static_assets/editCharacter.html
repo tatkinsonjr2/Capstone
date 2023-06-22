@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
@@ -26,7 +26,7 @@
                         <ul class="list-inline">
                             <li class="list-inline-item">
             <span class="font-weight-bold h1" data-original-title="" title="">
-                Edit <a href="" class="text-death-knight" data-original-title="" title="">Deadcateddad</a>
+                Edit Character <span class="text-death-knight" data-original-title="" title="" id="profile-characterName"></span>
             </span>
                             </li>
                         </ul>
@@ -34,8 +34,7 @@
                     <li>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <span class="fas fa-fw fa-bow-arrow text-dps" data-original-title="" title=""></span>
-                                Death Knight
+                                <span class="fas fa-fw fa-bow-arrow text-dps" data-original-title="" title="" id="characterClass"></span>
                             </li>
                         </ul>
                     </li>
@@ -45,7 +44,7 @@
             </div>
         </div>
 
-        <form id="editForm" class="form-horizontal" role="form" method="POST" action="https://thatsmybis.com/12015/sanctuary/c/update">
+        <form id="editForm" class="form-horizontal" role="form">
             <input type="hidden" name="_token" value="dNk83Zd80zKg3AhaLUBOsLmERPYp6F945An0HILH">
 
             <input hidden="" name="id" value="426851">
@@ -56,38 +55,34 @@
                     <div class="row mb-4">
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="name" class="font-weight-bold">
+                                <label for="characterName" class="font-weight-bold">
                                     <span class="text-muted fas fa-fw fa-user" data-original-title="" title=""></span>
                                     Character Name
                                 </label>
-                                <input name="name" class="js-name form-control dark" maxlength="40" type="text" placeholder="eg. Radu" value="Deadcateddad">
+                                <input name="name" class="js-name form-control dark" maxlength="40" type="text" placeholder="eg. Radu" id="characterName">
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="member_id" class="font-weight-normal">
+                                <label for="username" class="font-weight-normal">
                                     <span class="text-muted fas fa-fw fa-user" data-original-title="" title=""></span>
                                     Guild Member
                                 </label>
                                 <div class="form-group">
                                     <div class="dropdown bootstrap-select form-control dark">
-                                        <select name="member_id" class="form-control dark selectpicker" data-live-search="true">
-                                    </select>
-                                        <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light" data-toggle="dropdown" role="combobox" aria-owns="bs-select-1" aria-haspopup="listbox" aria-expanded="false" title="tatk2">
-                                            <div class="filter-option"><div class="filter-option-inner">
-                                                <div class="filter-option-inner-inner">tatk2</div>
-                                            </div>
-                                            </div>
-                                        </button>
+                                        <input name="member_id" class="form-control dark selectpicker" data-live-search="true" id="username" placeholder="enter your username">
+                                        </input>
                                         <div class="dropdown-menu ">
-                                        <div class="bs-searchbox">
-                                            <input type="search" class="form-control" autocomplete="off" role="combobox" aria-label="Search" aria-controls="bs-select-1" aria-autocomplete="list">
+                                            <div class="bs-searchbox">
+                                                <input type="search" class="form-control" autocomplete="off" role="combobox" aria-label="Search" aria-controls="bs-select-1" aria-autocomplete="list">
+                                            </div>
+                                            <div class="inner show" role="listbox" id="bs-select-1" tabindex="-1">
+                                                <ul class="dropdown-menu inner show" role="presentation">
+
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <div class="inner show" role="listbox" id="bs-select-1" tabindex="-1">
-                                            <ul class="dropdown-menu inner show" role="presentation"></ul>
-                                        </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -98,11 +93,11 @@
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="class" class="font-weight-bold">
-                                    <span class="text-muted fas fa-fw fa-swords" data-original-title="" title=""></span>
+                                    <span class="text-muted fas fa-fw fa-swords" data-original-title="" title=""><i class="bi bi-person-fill-gear"></i></span>
                                     Class
                                 </label>
                                 <div class="form-group">
-                                    <select name="class" class="js-class form-control dark" data-index="1">
+                                    <select name="class" class="js-class form-control dark" data-index="1" id="class">
                                         <option value="">
                                             —
                                         </option>
@@ -144,11 +139,11 @@
 
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="archetype" class="font-weight-bold">
+                                <label for="role" class="font-weight-bold">
                                     Role
                                 </label>
                                 <div class="form-group">
-                                    <select name="archetype" class="js-archetype form-control dark" data-index="1">
+                                    <select name="archetype" class="js-archetype form-control dark" data-index="1" id="role">
                                         <option value="" selected="">
                                             —
                                         </option>
@@ -174,7 +169,7 @@
                                     Spec
                                 </label>
                                 <div class="form-group">
-                                    <select name="spec" class="js-spec form-control dark" data-index="1">
+                                    <select name="spec" class="js-spec form-control dark" data-index="1" id="spec">
                                         <option value="" selected="">
                                             —
                                         </option>
@@ -285,7 +280,7 @@
                                     Race
                                 </label>
                                 <div class="form-group">
-                                    <select name="race" class="form-control dark">
+                                    <select name="race" class="form-control dark" id="race">
                                         <option value="" selected="">
                                             —
                                         </option>
@@ -324,15 +319,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-sm-3 col-6">
-                            <div class="form-group">
-                                <label for="level" class="text-muted font-weight-normal">
-                                    Level
-                                </label>
-                                <input name="level" type="number" min="1" max="80" class="form-control dark" placeholder="0" value="80">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -342,12 +328,12 @@
                     <div class="row">
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="class" class="font-weight-bold">
+                                <label for="profession1" class="font-weight-bold">
                                     <span class="text-muted fas fa-fw fa-flower-daffodil" data-original-title="" title=""></span>
                                     Profession 1
                                 </label>
                                 <div class="form-group">
-                                    <select name="profession_1" class="form-control dark">
+                                    <select name="profession_1" class="form-control dark" id="profession1">
                                         <option value="" selected="">
                                             —
                                         </option>
@@ -391,11 +377,11 @@
                         </div>
                         <div class="col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="class" class="font-weight-bold">
+                                <label for="profession2" class="font-weight-bold">
                                     Profession 2
                                 </label>
                                 <div class="form-group">
-                                    <select name="profession_2" class="form-control dark">
+                                    <select name="profession_2" class="form-control dark" id="profession2">
                                         <option value="" selected="">
                                             —
                                         </option>
@@ -438,34 +424,35 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
             <div class="row mb-4 pb-1 pt-2 bg-light rounded">
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="public_note" class="font-weight-bold">
-                            <span class="text-muted fas fa-fw fa-comment-alt-lines" data-original-title="" title=""></span>
+                        <label for="publicNote" class="font-weight-bold">
+                            <span class="text-muted fas fa-fw fa-comment-alt-lines" data-original-title="" title="">
+                                <i class="bi bi-chat-left-text-fill"></i>
+                            </span>
                             Public Note
                             <small class="text-muted">
                                 anyone in the guild can see this
                             </small>
                         </label>
-                        <textarea maxlength="140" data-max-length="140" name="public_note" rows="1" placeholder="anyone in the guild can see this" class="form-control dark"></textarea>
+                        <textarea maxlength="140" data-max-length="140" name="public_note" rows="1" placeholder="anyone in the guild can see this" class="form-control dark" id="publicNote"></textarea>
                     </div>
                 </div>
 
                 <div class="col-12 mt-4">
                     <div class="form-group">
-                        <label for="officer_note" class="font-weight-bold">
+                        <label for="officerNote" class="font-weight-bold">
                             <span class="text-muted fas fa-fw fa-shield" data-original-title="" title=""></span>
                             Officer Note
                             <small class="text-muted">
                                 only officers can see this
                             </small>
                         </label>
-                        <textarea maxlength="140" data-max-length="140" name="officer_note" rows="1" placeholder="only officers can see this" class="form-control dark"></textarea>
+                        <textarea maxlength="140" data-max-length="140" name="officer_note" rows="1" placeholder="only officers can see this" class="form-control dark" id="OfficerNote"></textarea>
                     </div>
                 </div>
             </div>
@@ -475,7 +462,7 @@
                     <div class="form-group mb-0">
                         <div class="checkbox" style="margin-top:6px;">
                             <label>
-                                <input type="checkbox" name="is_alt" value="1" class="">
+                                <input type="checkbox" name="is_alt" value="1" class="" id="alternateCharacter">
                                 Alt Character <small class="text-muted">
                             </small>
                             </label>
@@ -485,9 +472,11 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-success"><span class="fas fa-fw fa-save" data-original-title="" title=""></span> Save</button>
+                <button class="btn btn-success"><span class="fas fa-fw fa-save" data-original-title="" id="create"></span>Save</button>
+            </div>
             </div>
         </form>
+        </div>
     </div>
     <div class="col-xl-2 d-lg-block d-none m-0 p-0">
         <div id="right-banner" class="poster-sticky"></div>

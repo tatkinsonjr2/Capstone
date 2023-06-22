@@ -3,7 +3,7 @@ import Header from '../components/header';
 import BindingClass from '../util/bindingClass';
 import DataStore from "../util/DataStore";
 
-class CreateCharacter extends BindingClass{
+class EditCharacter extends BindingClass{
     constructor() {
         super();
         this.bindClassMethods(['mount', 'submit', 'redirectToViewProfile'], this);
@@ -18,11 +18,7 @@ class CreateCharacter extends BindingClass{
     mount() {
         document.getElementById("create").addEventListener("click", this.submit);
         this.client = new SanctuaryRaiderClient();
-        const urlParams = new URLSearchParams(window.location.search);
-
     }
-
-
 
     /**
      * Method to run when the create profile submit button is pressed.
@@ -35,18 +31,24 @@ class CreateCharacter extends BindingClass{
         createButton.innerText = "Loading...";
 
         const username = document.getElementById('username').value;
-        const guild = document.getElementById('guild').value;
+        const characterName = document.getElementById('characterName').value;
         const publicNote = document.getElementById('publicNote').value;
         const officerNote = document.getElementById('officerNote').value;
+        const role = document.getElementById('role').value;
+        const spec = document.getElementById('spec').value;
+        const professionOne = document.getElementById('profession1').value;
+        const professionTwo = document.getElementById('profession2').value;
+        const race = document.getElementById('race').value;
+        const characterClass = document.getElementById('class').value;
 
 
-        const profile = await this.client.updateProfile(username, guild, publicNote, officerNote, (error) => {
+        const character = await this.client.updateCharacter(username, characterName, characterClass, spec, role, race, publicNote, officerNote, professionOne, professionTwo,(error) => {
             createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
-
-        this.dataStore.set('profile', profile);
+        this.dataStore.set('profile', username);
+        this.dataStore.set('character', character);
         console.log("complete");
         alert('character has been saved successfully')
     }
@@ -56,10 +58,10 @@ class CreateCharacter extends BindingClass{
      */
 
     redirectToViewProfile(){
-        const profile = this.dataStore.get('profile');
+        const profile = this.dataStore.get('profile')
         console.log("profile", profile);
         if (profile != null){
-            window.location.href = `/viewProfile.html?username=${profile.username}`;
+            window.location.href = `/viewProfile.html?username=${profile}`;
         }
     }
 }
@@ -68,8 +70,8 @@ class CreateCharacter extends BindingClass{
  * Main method to run when the page contents have loaded
  */
 const main = async() => {
-    const createCharacter = new CreateCharacter();
-    createCharacter.mount();
+    const editCharacter = new EditCharacter();
+    editCharacter.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);
