@@ -31,4 +31,6 @@ public interface ServiceComponent {
   GetAllCharactersActivity provideGetAllCharactersActivity();
 
   GetAllRaidsByCharacterNameActivity provideGetAllRaidsByCharacterNameActivity();
+
+  DeleteCharacterActivity provideDeleteCharacterActivity();
 }
