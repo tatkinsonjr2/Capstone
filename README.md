@@ -86,6 +86,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 Sanctuary Raider aims to provide guild leaders with the management tools to schedule raids, manage rosters and item distribution for guild members. Track everything from raid attendance, wishlists and character professions.
+UPDATE 10/05/2023. I have recently been employed and it will be difficult for me to finish the front-end portion of the product. Let this project stand as an example of my backend engineering experience. Hopefully I can come back to this project and fully finish my ideas/concepts. Enjoy!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
